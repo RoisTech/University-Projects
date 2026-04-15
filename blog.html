@@ -2,128 +2,110 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Blog HTML5</title>
+    <title>Blog</title>
 </head>
 <body>
 
-<!-- HEADER GLOBAL -->
 <header>
-    <img src="logo.png" alt="Logo do Blog" width="100">
+    <img src="logo.png" alt="Logo" width="120">
 
-    <nav aria-label="Menu principal">
+    <nav aria-label="Categorias">
         <ul>
-            <li><a href="#">Início</a></li>
-            <li><a href="#">Tecnologia</a></li>
-            <li><a href="#">Programação</a></li>
-            <li><a href="#">Tutoriais</a></li>
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">JavaScript</a></li>
+            <li><a href="#">Backend</a></li>
         </ul>
     </nav>
 </header>
 
-<!-- CONTEÚDO PRINCIPAL -->
 <main>
 
-    <!-- ARTIGO 1 -->
-    <article>
-        <header>
-            <h2>Introdução ao HTML5</h2>
-            <time datetime="2026-04-06">6 de Abril de 2026</time>
-        </header>
+<article>
+<header>
+<h2>HTML5</h2>
+<time datetime="2025-01-01">1 Jan 2025</time>
+</header>
 
-        <section>
-            <h3>O que é HTML?</h3>
-            <p>HTML é a base da <strong>web moderna</strong> e permite estruturar conteúdos.</p>
-        </section>
+<section>
+<p><strong>HTML</strong> é a base da web.</p>
+</section>
 
-        <section>
-            <h3>Importância</h3>
-            <p>Aprender HTML é <em>essencial</em> para qualquer programador.
-            Usa <mark>tags semânticas</mark> para melhorar SEO.</p>
-        </section>
+<section>
+<p>É <em>fundamental</em> aprender.</p>
+</section>
 
-        <footer>
-            <p>Autor: Sérgio</p>
-            <p>Tags: HTML, Web</p>
-        </footer>
-    </article>
+<footer>
+<p>Autor: Sérgio</p>
+<p>Tags: <mark>HTML</mark></p>
+</footer>
+</article>
 
-    <!-- ARTIGO 2 -->
-    <article>
-        <header>
-            <h2>CSS Básico</h2>
-            <time datetime="2026-04-05">5 de Abril de 2026</time>
-        </header>
+<article>
+<header>
+<h2>CSS</h2>
+<time datetime="2025-02-01">1 Fev 2025</time>
+</header>
 
-        <section>
-            <h3>O que é CSS?</h3>
-            <p>CSS é usado para estilizar páginas web com <strong>cores e layouts</strong>.</p>
-        </section>
+<section>
+<p><abbr title="Cascading Style Sheets">CSS</abbr> define o estilo.</p>
+</section>
 
-        <section>
-            <h3>Exemplo</h3>
-            <p>Com CSS podes criar designs <em>responsivos</em> e modernos.</p>
-        </section>
+<section>
+<p>Permite layouts modernos.</p>
+</section>
 
-        <footer>
-            <p>Autor: Sérgio</p>
-            <p>Tags: CSS, Design</p>
-        </footer>
-    </article>
+<footer>
+<p>Autor: Sérgio</p>
+</footer>
+</article>
 
-    <!-- ARTIGO 3 -->
-    <article>
-        <header>
-            <h2>JavaScript</h2>
-            <time datetime="2026-04-04">4 de Abril de 2026</time>
-        </header>
+<article>
+<header>
+<h2>JavaScript</h2>
+<time datetime="2025-03-01">1 Mar 2025</time>
+</header>
 
-        <section>
-            <h3>Interatividade</h3>
-            <p>JavaScript permite adicionar <strong>interatividade</strong> ao site.</p>
-        </section>
+<section>
+<p>JavaScript adiciona interatividade.</p>
+</section>
 
-        <section>
-            <h3>Exemplo real</h3>
-            <p>O <abbr title="Document Object Model">DOM</abbr> é manipulado com JS.</p>
-        </section>
+<section>
+<p>Essencial no frontend.</p>
+</section>
 
-        <footer>
-            <p>Autor: Sérgio</p>
-            <p>Tags: JavaScript, Programação</p>
-        </footer>
-    </article>
+<footer>
+<p>Autor: Sérgio</p>
+</footer>
+</article>
 
-</main>
+<aside aria-label="Barra lateral">
 
-<!-- ASIDE (LATERAL) -->
-<aside aria-label="Conteúdo lateral">
+<section>
+<h2>Recentes</h2>
+<ul>
+<li>HTML</li>
+<li>CSS</li>
+</ul>
+</section>
 
-    <section>
-        <h3>Artigos Recentes</h3>
-        <ul>
-            <li><a href="#">HTML5</a></li>
-            <li><a href="#">CSS</a></li>
-            <li><a href="#">JavaScript</a></li>
-        </ul>
-    </section>
-
-    <section>
-        <h3>Categorias</h3>
-        <ul>
-            <li><a href="#">Web</a></li>
-            <li><a href="#">Programação</a></li>
-            <li><a href="#">Design</a></li>
-        </ul>
-    </section>
+<section>
+<h2>Categorias</h2>
+<ul>
+<li>Frontend</li>
+<li>Backend</li>
+</ul>
+</section>
 
 </aside>
 
-<!-- FOOTER GLOBAL -->
+</main>
+
 <footer>
-    <address>
-        <p>Email: sergio@email.com</p>
-        <p>Lisboa, Portugal</p>
-    </address>
+<address>
+Email: <a href="mailto:sergio@email.com">sergio@email.com</a><br>
+Lisboa, Portugal
+</address>
 </footer>
 
 </body>

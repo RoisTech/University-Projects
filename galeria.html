@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Galeria</title>
+</head>
+<body>
+
+<header>
+<a href="index.html">
+<img src="logo.png" alt="Logo ISLA" width="120">
+</a>
+</header>
+
+<main>
+
+<h1>Galeria Multimédia</h1>
+
+<!-- GALERIA -->
+<section>
+
+<figure>
+<picture>
+<source type="image/avif" srcset="img1.avif">
+<source type="image/webp" srcset="img1.webp">
+<img src="img1.jpg" alt="Imagem 1" width="400">
+</picture>
+<figcaption>Imagem 1</figcaption>
+</figure>
+
+<figure>
+<picture>
+<source type="image/avif" srcset="img2.avif">
+<source type="image/webp" srcset="img2.webp">
+<img src="img2.jpg" alt="Imagem 2" width="400">
+</picture>
+<figcaption>Imagem 2</figcaption>
+</figure>
+
+<figure>
+<picture>
+<source type="image/avif" srcset="img3.avif">
+<source type="image/webp" srcset="img3.webp">
+<img src="img3.jpg" alt="Imagem 3" width="400">
+</picture>
+<figcaption>Imagem 3</figcaption>
+</figure>
+
+</section>
+
+<!-- VIDEO -->
+<section>
+<h2>Vídeo</h2>
+<video controls width="600" poster="thumb.jpg">
+<source src="video.mp4" type="video/mp4">
+</video>
+</section>
+
+<!-- AUDIO -->
+<section>
+<h2>Áudio</h2>
+<audio controls>
+<source src="audio.mp3" type="audio/mpeg">
+</audio>
+
+<audio controls>
+<source src="audio2.mp3" type="audio/mpeg">
+</audio>
+</section>
+
+<!-- MAPA -->
+<section>
+<h2>Localização</h2>
+<iframe
+src="https://maps.google.com/maps?q=Santarém&output=embed"
+width="600"
+height="400"
+title="Mapa ISLA"
+loading="lazy">
+</iframe>
+</section>
+
+</main>
+
+<footer>
+<p>© 2025 Sérgio Simões</p>
+</footer>
+
+</body>
+</html>

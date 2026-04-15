@@ -3,60 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estrutura Semântica</title>
+    <title>Estrutura</title>
 </head>
 <body>
 
-<!-- TOPO -->
 <header>
-    <h1>Topo</h1>
+    <h1>Curso TPSI</h1>
+
+    <nav aria-label="Menu principal">
+        <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Sobre</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
 </header>
 
-<!-- MENU -->
-<nav aria-label="Menu principal">
-    <ul>
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Sobre</a></li>
-        <li><a href="#">Contacto</a></li>
-    </ul>
-</nav>
-
-<!-- CONTEÚDO PRINCIPAL -->
 <main>
     <article>
-        <h2>Conteúdo</h2>
-        <p>Este é o conteúdo principal da página.</p>
-    </article>
+        <header>
+            <h2>Introdução ao HTML5</h2>
+        </header>
 
-    <!-- LATERAL -->
-    <aside aria-label="Conteúdo lateral">
-        <h2>Lateral</h2>
-        <p>Informação complementar.</p>
-    </aside>
+        <p>O HTML5 permite criar páginas estruturadas.</p>
+        <p>É essencial para qualquer programador web.</p>
+    </article>
 </main>
 
-<!-- RODAPÉ -->
 <footer>
-    <p>Rodapé</p>
+    <p>Sérgio Simões - 2026</p>
 </footer>
 
-<!--
-COMPARAÇÃO (ANTES vs DEPOIS)
-
-ANTES:
-- Uso excessivo de <div> sem significado
-- Código difícil de entender
-- Sem estrutura lógica para SEO e leitores de ecrã
-
-DEPOIS:
-- Uso de tags semânticas: <header>, <nav>, <main>, <article>, <aside>, <footer>
-- Melhor acessibilidade (screen readers entendem a estrutura)
-- Melhor SEO (Google entende o conteúdo)
-- Código mais organizado e profissional
-- Mais fácil de manter e evoluir
-
-CONCLUSÃO:
-As tags semânticas tornam o HTML mais claro, acessível e otimizado.
--->
 </body>
 </html>
