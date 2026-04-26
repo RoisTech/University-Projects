@@ -1,7 +1,10 @@
-# ======================================================
-# Exercício 1 - Inscrição num Evento
-# ======================================================
+"""
+Nome: Sérgio Simões
+UC: Programação de Computadores II
+Data:19/03/2026
+"""
 
+#Exercício 1 - Inscrição num Evento
 nome = input("Nome: ")
 email = input("Email: ")
 idade = int(input("Idade: "))
@@ -14,11 +17,7 @@ print("\n--- RESUMO ---")
 print(f"{nome}, {idade} anos, email {email}, inscrição de {preco:.2f}€.")
 print(f"Pagamento efetuado: {inscricao_paga}")
 
-
-# ======================================================
-# Exercício 2 - Orçamento de Material Escolar
-# ======================================================
-
+#Exercício 2 - Orçamento de Material Escolar
 artigo = input("\nNome do artigo: ")
 preco_unitario = float(input("Preço unitário (€): "))
 quantidade = int(input("Quantidade: "))
@@ -31,11 +30,7 @@ print(f"Artigo: {artigo}")
 print(f"Subtotal: {subtotal:.2f}€")
 print(f"Total com IVA: {total:.2f}€")
 
-
-# ======================================================
-# Exercício 3 - Estimativa de Consumo de Água
-# ======================================================
-
+#Exercício 3 - Estimativa de Consumo de Água
 mes = input("\nMês: ")
 consumo_diario = float(input("Consumo diário (litros): "))
 
@@ -45,11 +40,7 @@ consumo_m3 = consumo_mensal / 1000
 print("\n--- CONSUMO ---")
 print(f"No mês de {mes}, consumiu {consumo_mensal:.2f} litros ({consumo_m3:.2f} m³).")
 
-
-# ======================================================
-# Exercício 4 - Pagamento de Serviço
-# ======================================================
-
+#Exercício 4 - Pagamento de Serviço
 servico = input("\nNome do serviço: ")
 horas = float(input("Número de horas: "))
 valor_hora = float(input("Valor por hora (€): "))
@@ -62,11 +53,7 @@ print(f"Serviço: {servico}")
 print(f"Total a receber: {total_receber:.2f}€")
 print(f"Valor superior a 100€: {maior_100}")
 
-
-# ======================================================
-# Exercício 5 - Avaliação de uma Unidade Curricular
-# ======================================================
-
+#Exercício 5 - Avaliação de uma Unidade Curricular
 uc = input("\nNome da UC: ")
 nota1 = float(input("Nota 1: "))
 nota2 = float(input("Nota 2: "))
