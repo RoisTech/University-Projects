@@ -1,0 +1,110 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Helvetica, sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* CONTAINER (faltava isto!) */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  padding: 15px 40px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+/* LOGO */
+.logotipo {
+  display: flex;
+  align-items: center;
+}
+
+.logotipo img {
+  width: 50px;
+  margin-right: 10px;
+}
+
+/* MENU (fica à direita) */
+.links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.links a {
+  text-decoration: none;
+  color: #000;
+  font-size: 18px;
+  transition: 0.3s;
+}
+
+.links a:hover {
+  color: #0077ff;
+}
+
+/* MAIN */
+main {
+  margin-top: 90px;
+}
+
+.banner {
+  width: 100%;
+  height: 60vh;
+  min-height: 150px;
+
+  background-image: url('../imagens/banner.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+}
+
+/* OVERLAY ESCURO */
+.banner::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* TEXTO */
+.banner-text {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+}
+
+.banner-text h1 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.banner-text p {
+  font-size: 22px;
+}
