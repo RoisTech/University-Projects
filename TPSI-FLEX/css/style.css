@@ -1,4 +1,3 @@
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +9,7 @@ body {
   overflow-x: hidden;
 }
 
-/* CONTAINER (faltava isto!) */
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -19,7 +18,7 @@ body {
   align-items: center;
 }
 
-/* HEADER */
+
 header {
   position: fixed;
   top: 0;
@@ -30,7 +29,7 @@ header {
   z-index: 1000;
 }
 
-/* LOGO */
+
 .logotipo {
   display: flex;
   align-items: center;
@@ -41,7 +40,7 @@ header {
   margin-right: 10px;
 }
 
-/* MENU (fica à direita) */
+
 .links {
   display: flex;
   list-style: none;
@@ -59,7 +58,7 @@ header {
   color: #0077ff;
 }
 
-/* MAIN */
+
 main {
   margin-top: 90px;
 }
@@ -81,7 +80,6 @@ main {
   position: relative;
 }
 
-/* OVERLAY ESCURO */
 .banner::before {
   content: "";
   position: absolute;
@@ -92,7 +90,6 @@ main {
   background: rgba(0, 0, 0, 0.4);
 }
 
-/* TEXTO */
 .banner-text {
   position: relative;
   z-index: 1;
