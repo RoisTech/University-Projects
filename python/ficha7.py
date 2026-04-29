@@ -86,20 +86,26 @@ else:
 resp_cert = input("Pretende certificado? (s/n): ").strip().lower()
 quer_certificado = resp_cert == "s"
 
-print(f"\nSessão: {sessao_escolhida if opcao_valida else 'Nenhuma'}")
+print(f"Sessão: {sessao_escolhida if opcao_valida else 'Nenhuma'}")
 print(f"Certificado: {'Sim' if quer_certificado else 'Não'}")
 
-#Exercício 3 – Ma teriais Utilizados
+#Exercício 3 – Materiais Utilizados
 materiais = []
 
 #Introdução de dados até escrever "fim"
-materiais_input = input("introduza um material utilizado (ou `fim` para terminar): ")
-while True
-item = input(">").strip()
-if item.lower() == "fim":
-        reak
-if item: #evita adicionar strings vazias
-        materiais.append(item)  
+while True:
+    item = input("Introduza um material utilizado (ou 'fim' para terminar): ").strip()
+    if item.lower() == "fim":
+        break
+    if item:  # evita adicionar strings vazias
+        materiais.append(item)
+
+#Apresentar a lista completa
+print("Materiais Utilizados:")
+for material in materiais:
+    print(f"- {material}")
+
+#Pesquisa de material
 
 
 
