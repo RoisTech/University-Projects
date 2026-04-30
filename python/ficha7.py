@@ -37,7 +37,7 @@ print(f"Nome: {participante['nome']}")
 print(f"Email: {participante['email']}")
 print(f"Maior de idade: {'Sim' if participante['maior_idade'] else 'Não'}")
 print(f"Classificação: {participante['classificacao_pagamento']}")
-print("---------------------------\n")
+print("")
 
 #consulta de chave no dicionário#
 chave_consulta = input("Introduza a chave que deseja consultar (ex: nome, idade, email, valor_pago): ")
@@ -106,8 +106,31 @@ for material in materiais:
     print(f"- {material}")
 
 #Pesquisa de material
+pesquisa = input("Digite um material para pesquisar na lista: ").strip()
 
+# Variável booleana para indicar se existe
+existe_na_lista = pesquisa in materiais
+print(f"O material '{pesquisa}' pertence à lista? {existe_na_lista}")
 
+#Criar um conjunto (set) para materiais únicos
+materiais_unicos = set(materiais)
 
+#Cálculos e estatísticas
+total_registos = len(materiais)
+total_unicos = len(materiais_unicos)
+
+#Variável booleana para verificar se existiam repetidos
+tem_repetidos = total_registos > total_unicos
+
+#Verificar se o "computador" foi utilizado (ignorando maiúsculas/minúsculas)
+#Criamos uma lista em minúsculas para a verificação ser precisa
+computador_utilizado = "computador" in [m.lower() for m in materiais]
+
+#Apresentação final dos resultados
+print("--- Resumo de Materiais ---")
+print(f"Total de materiais registados: {total_registos}")
+print(f"Total de materiais diferentes (únicos): {total_unicos}")
+print(f"Existiam materiais repetidos? {tem_repetidos}")
+print(f"O material 'computador' foi utilizado? {computador_utilizado}")
 
                             

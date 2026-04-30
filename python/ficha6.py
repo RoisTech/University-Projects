@@ -1,7 +1,7 @@
 """
 Nome: Sérgio Simões
 UC: Programação de Computadores II
-Data:19/03/2026
+Data:23/04/2026
 """
 
 #Exercício 1 – Pedido de Apoio Pedagógico
@@ -10,7 +10,7 @@ email = input("Email: ").strip()
 idade = int(input("Idade: "))
 mensagem = input("Mensagem: ").strip()
 
-print("\n--- Tratamento ---")
+print(" Tratamento ")
 print("Maiúsculas:", nome.upper())
 print("Minúsculas:", nome.lower())
 print("Nº caracteres:", len(nome))

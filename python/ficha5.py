@@ -7,7 +7,7 @@ Data:19/03/2026
 #Exercício 1 – While + For (Contagem e Soma)
 n = int(input("Introduza um número inteiro positivo: "))
 
-# While (contagem)
+# While (contagem)23
 i = 1
 while i <= n:
     print(i)
