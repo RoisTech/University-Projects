@@ -1,0 +1,94 @@
+/* RESET + BOX MODEL */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIÁVEIS (boa prática profissional) */
+:root {
+  --cor-primaria: #3182ce;
+  --cor-secundaria: #2d3748;
+  --cor-fundo: #f7fafc;
+  --cor-branco: #ffffff;
+  --raio: 8px;
+}
+
+/* BODY */
+body {
+  font-family: Arial, sans-serif;
+  background: var(--cor-fundo);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* CONTAINER */
+.container {
+  background: var(--cor-branco);
+  padding: 30px;
+  border-radius: var(--raio);
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* TÍTULO */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* FORM */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* INPUTS */
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: var(--raio);
+}
+
+/* FOCUS */
+input:focus,
+textarea:focus {
+  border-color: var(--cor-primaria);
+  outline: none;
+}
+
+/* BOTÕES */
+.botoes {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: var(--raio);
+  background: var(--cor-primaria);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #2b6cb0;
+}
+
+/* RESET BUTTON */
+button[type="reset"] {
+  background: #e53e3e;
+}
+
+button[type="reset"]:hover {
+  background: #c53030;
+}

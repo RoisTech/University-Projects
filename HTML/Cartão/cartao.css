@@ -1,0 +1,78 @@
+/* Variáveis */
+:root {
+  --cor-primaria: #4f46e5;
+  --cor-secundaria: #6366f1;
+  --cor-texto: #1f2937;
+  --cor-fundo: #f3f4f6;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Corpo */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--cor-fundo);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/*Cartão */
+.card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+/*Topo com gradiente (BÓNUS) */
+.card-top {
+  height: 80px;
+  background: linear-gradient(
+    135deg,
+    var(--cor-primaria),
+    var(--cor-secundaria)
+  );
+  border-radius: 12px 12px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+/* Avatar */
+.avatar {
+  width: 100px;
+  height: 100px;
+  background-color: var(--cor-primaria);
+  border-radius: 50%;
+  margin: 60px auto 15px;
+  border: 4px solid white;
+}
+
+/*Texto */
+h2 {
+  font-weight: 700;
+  color: var(--cor-texto);
+  margin-bottom: 5px;
+}
+
+.cargo {
+  font-weight: 500;
+  color: var(--cor-primaria);
+  margin-bottom: 5px;
+}
+
+.localizacao {
+  font-weight: 300;
+  color: #6b7280;
+}

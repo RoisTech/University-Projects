@@ -1,0 +1,74 @@
+/* REGRA OBRIGATÓRIA (BOX MODEL CORRETO) */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* BODY */
+body {
+  font-family: Arial, sans-serif;
+  padding: 30px;
+}
+
+/* BOX MODEL DEMO */
+.box-model-demo {
+  width: 200px;
+
+  /* CONTENT */
+  background: lightblue;
+
+  /* PADDING */
+  padding: 20px;
+  background-clip: content-box;
+
+  /* BORDER */
+  border: 10px solid blue;
+
+  /* MARGIN */
+  margin: 40px;
+
+  text-align: center;
+  font-weight: bold;
+}
+
+/* LISTA ZEBRA */
+.lista {
+  list-style: none;
+  padding: 0;
+  max-width: 200px;
+}
+
+.lista li {
+  padding: 10px;
+}
+
+/* nth-child (pedido no exercício) */
+.lista li:nth-child(odd) {
+  background: #ddd;
+}
+
+.lista li:nth-child(even) {
+  background: #aaa;
+}
+
+/* BADGE (BÓNUS) */
+.icone {
+  position: relative;
+  /* IMPORTANTE */
+  font-size: 40px;
+  width: 60px;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+
+  background: red;
+  color: white;
+  font-size: 12px;
+
+  padding: 4px 6px;
+  border-radius: 50%;
+}

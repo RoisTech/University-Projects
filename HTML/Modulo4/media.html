@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Responsivo</title>
+</head>
+<body>
+
+<h1>Imagens Responsivas</h1>
+
+<!-- SRCSET -->
+<img
+src="img-800.jpg"
+srcset="img-400.jpg 400w, img-800.jpg 800w, img-1200.jpg 1200w"
+sizes="(max-width: 600px) 100vw, 50vw"
+alt="Imagem responsiva"
+width="800"
+height="450"
+>
+
+<!-- PICTURE (formatos) -->
+<picture>
+<source type="image/avif" srcset="foto.avif">
+<source type="image/webp" srcset="foto.webp">
+<img src="foto.jpg" alt="Imagem fallback" width="800" height="450">
+</picture>
+
+<!-- PICTURE (art direction) -->
+<picture>
+<source media="(max-width: 600px)" srcset="mobile.jpg">
+<img src="desktop.jpg" alt="Imagem adaptativa" width="800">
+</picture>
+
+</body>
+</html>
