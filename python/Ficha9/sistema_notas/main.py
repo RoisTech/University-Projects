@@ -1,7 +1,8 @@
 from calculos import (
     calcular_media,
     obter_maior_nota,
-    obter_menor_nota
+    obter_menor_nota,
+    nota_valida
 )
 
 
@@ -12,6 +13,11 @@ def main():
 
     for i in range(1, 4):
         nota = float(input(f"Introduza a nota {i}: "))
+
+        if not nota_valida(nota):
+            print("Nota inválida.")
+            return
+
         notas.append(nota)
 
     media = calcular_media(notas)
