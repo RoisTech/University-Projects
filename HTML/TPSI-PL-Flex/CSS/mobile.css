@@ -1,26 +1,178 @@
-/* Mobile 580 */
-@media (max-width: 580px) {
+/* ====================================
+   TABLET - até 768px
+==================================== */
+@media (max-width: 768px) {
+
+    /* Header */
     header {
         flex-direction: column;
-        gap: 10px;
+        gap: 15px;
+        padding: 20px;
     }
 
     .logotipo {
-        margen-bottom: 15px;
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
     }
 
-    .banner {
-        margin: 0px 0px;
-    }
-    .banner img {
-        height: 30vh;
-    }
-    .titulo {
-       top: 15px;
-         left: 30px;
+    .logotipo p {
         font-size: 1.5rem;
-        line-height: 1.5rem;
     }
-    
+
+    /* Menu */
+    .links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .links a {
+        font-size: 16px;
+    }
+
+    /* Banner */
+    .banner {
+        height: 35vh;
+        margin-top: 170px;
+    }
+
+    .banner img {
+        height: 100%;
+    }
+
+    .titulo {
+        width: 90%;
+        text-align: center;
+
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .titulo h1 {
+        font-size: 2rem;
+    }
+
+    .titulo p {
+        font-size: 1rem;
+    }
+
+    /* Produtos */
+    .container {
+        width: 95%;
+        margin: 50px auto;
+        padding: 0;
+    }
+
+    .container h2 {
+        font-size: 1.8rem;
+    }
+
+    .cards {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .card {
+        width: 300px;
+    }
+}
+
+/* ====================================
+   MOBILE - até 580px
+==================================== */
+@media (max-width: 580px) {
+
+    /* Header */
+    header {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .logotipo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .logotipo p {
+        font-size: 1.3rem;
+    }
+
+    /* Menu */
+    .links {
+        gap: 10px;
+    }
+
+    .links a {
+        font-size: 14px;
+    }
+
+    /* Banner */
+    .banner {
+        height: 28vh;
+        margin-top: 180px;
+    }
+
+    .banner img {
+        object-fit: cover;
+    }
+
+    .titulo {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .titulo h1 {
+        font-size: 1.5rem;
+    }
+
+    .titulo p {
+        font-size: 0.9rem;
+    }
+
+    /* Produtos */
+    .container {
+        width: 95%;
+        margin-top: 40px;
+    }
+
+    .container h2 {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+
+    .cards {
+        gap: 15px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 320px;
+        padding: 15px;
+    }
+
+    .card img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .preco {
+        font-size: 1.3rem;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .card button {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    /* Footer */
+    footer {
+        padding: 15px;
+        font-size: 14px;
     }
 }
