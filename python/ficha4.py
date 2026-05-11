@@ -1,8 +1,4 @@
-"""
-Nome: Sérgio Simões
-UC: Programação de Computadores II
-Data:19/03/2026
-"""
+#Ficha 4S
 
 #Exercício 1 – Tratamento de Nome
 nome = input("Introduza o seu nome completo: ").strip()

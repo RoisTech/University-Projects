@@ -89,6 +89,8 @@ quer_certificado = resp_cert == "s"
 print(f"Sessão: {sessao_escolhida if opcao_valida else 'Nenhuma'}")
 print(f"Certificado: {'Sim' if quer_certificado else 'Não'}")
 
+
+
 #Exercício 3 – Materiais Utilizados
 materiais = []
 

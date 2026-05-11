@@ -1,8 +1,4 @@
-"""
-Nome: Sérgio Simões
-UC: Programação de Computadores II
-Data:19/03/2026
-"""
+#Ficha 3
 
 #Exercício 1 - Inscrição num Evento
 nome = input("Nome: ")

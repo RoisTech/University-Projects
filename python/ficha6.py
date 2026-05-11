@@ -1,8 +1,4 @@
-"""
-Nome: Sérgio Simões
-UC: Programação de Computadores II
-Data:23/04/2026
-"""
+#Ficha 6
 
 #Exercício 1 – Pedido de Apoio Pedagógico
 nome = input("Nome completo: ").strip()
