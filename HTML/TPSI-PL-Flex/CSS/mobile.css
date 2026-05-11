@@ -1,0 +1,23 @@
+/* Mobile 580 */
+@media (max-width: 580px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .logotipo {
+        margen-bottom: 15px;
+    }
+
+    .banner {
+        margin: 0px 0px;
+    }
+    .banner img {
+        height: 30vh;
+    }
+    .titulo {
+       top: 15px;
+         left: 30px;
+        font-size: 1.5rem;
+    }
+}
