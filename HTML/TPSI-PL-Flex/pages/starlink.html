@@ -21,248 +21,280 @@
 
 <body>
 
-<header>
+    <!-- HEADER -->
+    <header>
 
-    <div class="logotipo">
+        <div class="logotipo">
+            <img src="../img/flexbox.png"
+                alt="Logo">
 
-        <img src="../img/flexbox.png">
-
-        <p>Negócio</p>
-
-    </div>
-
-    <nav>
-
-        <ul class="links">
-
-            <li>
-                <a href="../index.html">
-                    ← Voltar
-                </a>
-            </li>
-
-        </ul>
-
-    </nav>
-
-</header>
-
-<main class="starlink-container">
-
-    <!-- ESQUERDA -->
-
-    <section class="produto-esquerda">
-
-        <h1 class="titulo-produto">
-            Produto em Destaque
-        </h1>
-
-        <div class="avaliacao">
-
-            <strong>4.4</strong>
-
-            ⭐⭐⭐⭐☆
-
-            <span>
-                (487 avaliações)
-            </span>
-
+            <p>Negócio</p>
         </div>
 
-        <div class="imagem-box">
+        <nav>
+            <ul class="links">
+                <li>
+                    <a href="../index.html">
+                        ← Voltar
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main class="starlink-container">
+
+        <!-- ESQUERDA -->
+        <section class="produto-esquerda">
+
+            <div class="avaliacao">
+                <strong>4.4</strong>
+                ⭐⭐⭐⭐⭐
+                <span>(487 avaliações)</span>
+            </div>
 
             <img id="imagem-principal"
-                src="../img/produtos/aspirador.png">
+                src="../img/produtos/aspirador.png"
+                alt="Produto">
 
-        </div>
+            <!-- MINIATURAS -->
+            <div class="miniaturas">
 
-        <!-- MINIATURAS -->
+                <img src="../img/produtos/aspirador.png"
+                    onclick="trocarImagem(this)">
 
-        <div class="miniaturas">
+                <img src="../img/produtos/computador.png"
+                    onclick="trocarImagem(this)">
 
-            <img src="../img/produtos/aspirador.png"
-                onclick="trocarImagem(this)">
+                <img src="../img/produtos/tablet.png"
+                    onclick="trocarImagem(this)">
 
-            <img src="../img/produtos/computador.png"
-                onclick="trocarImagem(this)">
-
-            <img src="../img/produtos/tablet.png"
-                onclick="trocarImagem(this)">
-
-            <img src="../img/produtos/telemovel.png"
-                onclick="trocarImagem(this)">
-
-            <img src="../img/produtos/rato.png"
-                onclick="trocarImagem(this)">
-
-        </div>
-
-    </section>
-
-    <!-- DIREITA -->
-
-    <aside class="produto-direita">
-
-        <p class="produto-preco">
-            €293,00
-        </p>
-
-        <p class="vendido">
-
-            Vendido e enviado por:
-
-            <strong>
-                NEGÓCIO PORTUGAL
-            </strong>
-
-        </p>
-
-        <!-- CONDIÇÕES -->
-
-        <div class="condicoes-venda">
-
-            <strong>
-                Condições de venda:
-            </strong>
-
-            <p>
-
-                Em stock.
-                Expedido desde Portugal
-                por transportadora expresso 24h.
-
-                Fatura com IVA
-                e garantia portuguesa.
-
-            </p>
-
-            <a href="#">
-                Ler Mais
-            </a>
-
-        </div>
-
-        <!-- BOTÃO -->
-
-        <button class="btn-comprar">
-
-            <i class="fa-solid fa-cart-shopping"></i>
-
-            ADICIONAR AO CARRINHO
-
-        </button>
-
-        <!-- ENTREGA -->
-
-        <div class="entrega-box">
-
-            <h3>
-
-                <i class="fa-solid fa-truck"></i>
-
-                Entrega
-
-            </h3>
-
-            <div class="entrega-info">
-
-                <span>
-                    Em 1 a 3 dias úteis
-                </span>
-
-                <strong>
-                    Desde €5,00
-                </strong>
+                <img src="../img/produtos/telemovel.png"
+                    onclick="trocarImagem(this)">
 
             </div>
 
-        </div>
+        </section>
 
-        <!-- VENDEDOR -->
+        <!-- DIREITA -->
+        <section class="produto-direita">
 
-        <div class="vendedor-box">
+            <h1 id="produto-nome">
+                Produto em Destaque
+            </h1>
 
-            <p>
-
-                Vendido por
-
-                <strong>
-                    Negócio Portugal
-                </strong>
-
+            <p class="produto-preco">
+                €293,00
             </p>
 
-            <div class="score">
+            <div class="descricao-produto">
 
-                <strong>4.4</strong>
+                <p>
+                    <strong>
+                        Vendido e enviado por:
+                    </strong>
 
-                ⭐⭐⭐⭐☆
+                    NEGÓCIO PORTUGAL
+                </p>
 
-                <span>
-                    (487 avaliações do vendedor)
-                </span>
+                <br>
 
-                <p class="vendas">
-                    +1 mil vendas
+                <p>
+                    <strong>
+                        Condições de venda:
+                    </strong>
+                </p>
+
+                <p>
+                    Em stock. Expedido desde Portugal
+                    por transportadora expresso 24h.
+                    Fatura com IVA e garantia portuguesa.
+                </p>
+
+                <br>
+
+                <a href="#">
+                    Ler Mais
+                </a>
+
+            </div>
+
+            <button class="btn-comprar">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                ADICIONAR AO CARRINHO
+
+            </button>
+
+            <!-- ENTREGA -->
+            <div class="entrega-box">
+
+                <h3>
+                    🚚 Entrega
+                </h3>
+
+                <div class="entrega-info">
+
+                    <span>
+                        Em 1 a 3 dias úteis
+                    </span>
+
+                    <strong>
+                        Desde €5,00
+                    </strong>
+
+                </div>
+
+            </div>
+
+            <!-- AVALIAÇÃO -->
+            <div class="info-box">
+
+                <h3>
+                    Vendido por Negócio Portugal
+                </h3>
+
+                <div class="rating-box">
+
+                    <strong>4.4</strong>
+
+                    ⭐⭐⭐⭐⭐
+
+                    <span>
+                        (487 avaliações do vendedor)
+                    </span>
+
+                    <p>
+                        +1 mil vendas
+                    </p>
+
+                </div>
+
+                <p>
+                    ↩️ Devolução grátis em 14 dias
+                </p>
+
+                <a href="#">
+                    Saber mais
+                </a>
+
+                <br><br>
+
+                <p>
+                    ❓ Perguntar ao vendedor
                 </p>
 
             </div>
 
-            <div class="devolucao">
+        </section>
 
-                <i class="fa-solid fa-rotate-left"></i>
+    </main>
 
-                Devolução grátis
-                em 14 dias
+    <script>
 
-            </div>
+        function trocarImagem(img) {
+            document.getElementById(
+                "imagem-principal"
+            ).src = img.src;
+        }
 
-            <div class="perguntar">
+        const produtos = {
 
-                <i class="fa-regular fa-message"></i>
+            aspirador: {
+                nome: "Aspirador Robô Inteligente",
+                preco: "€179,00",
+                imagem: "../img/produtos/aspirador.png"
+            },
 
-                Perguntar ao vendedor
+            cadeira: {
+                nome: "Cadeira Escritório Ergonómica",
+                preco: "€89,99",
+                imagem: "../img/produtos/cadeira_de_escritório.png"
+            },
 
-            </div>
+            computador: {
+                nome: "Computador Gaming",
+                preco: "€899,99",
+                imagem: "../img/produtos/computador.png"
+            },
 
-        </div>
+            jardim: {
+                nome: "Conjunto Jardim Premium",
+                preco: "€249,99",
+                imagem: "../img/produtos/conjunto_jardim.png"
+            },
 
-        <!-- OUTRAS OFERTAS -->
+            cafe: {
+                nome: "Máquina de Café Expresso",
+                preco: "€129,99",
+                imagem: "../img/produtos/máquina_de_café.png"
+            },
 
-        <div class="outras-ofertas">
+            camera: {
+                nome: "Máquina Fotográfica",
+                preco: "€599,99",
+                imagem: "../img/produtos/máquina_fotográfica.png"
+            },
 
-            <h3>
-                Ver outras ofertas
-            </h3>
+            loica: {
+                nome: "Máquina de Lavar Loiça",
+                preco: "€449,99",
+                imagem: "../img/produtos/máquina_lavar_loiça.png"
+            },
 
-            <p>
+            rato: {
+                nome: "Rato Gaming RGB",
+                preco: "€29,99",
+                imagem: "../img/produtos/rato.png"
+            },
 
-                Vendido por
-                +11 vendedores desde
+            tablet: {
+                nome: "Tablet Android Full HD",
+                preco: "€349,99",
+                imagem: "../img/produtos/tablet.png"
+            },
 
-                <span class="preco-vermelho">
-                    €322,87
-                </span>
+            telemovel: {
+                nome: "Smartphone Última Geração",
+                preco: "€699,99",
+                imagem: "../img/produtos/telemovel.png"
+            }
 
-            </p>
+        };
 
-        </div>
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
 
-    </aside>
+        const produtoSelecionado =
+            params.get("produto");
 
-</main>
+        const produto =
+            produtos[produtoSelecionado];
 
-<script>
+        if (produto) {
 
-function trocarImagem(img){
+            document.getElementById(
+                "produto-nome"
+            ).innerText =
+                produto.nome;
 
-    document.getElementById(
-        "imagem-principal"
-    ).src = img.src;
+            document.querySelector(
+                ".produto-preco"
+            ).innerText =
+                produto.preco;
 
-}
+            document.getElementById(
+                "imagem-principal"
+            ).src =
+                produto.imagem;
+        }
 
-</script>
+    </script>
 
 </body>
+
 </html>

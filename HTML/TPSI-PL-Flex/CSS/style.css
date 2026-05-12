@@ -153,3 +153,47 @@ header{
 .card button i{
     margin-right:10px;
 }
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    width: 100%;
+    background: #111;
+
+    border-top: 2px solid #222;
+
+    padding: 30px 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content p {
+    color: #bdbdbd;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.footer-content p:hover {
+    color: white;
+    transition: .3s ease;
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+
+    .footer-content p{
+        font-size:15px;
+        padding:0 15px;
+    }
+
+}
