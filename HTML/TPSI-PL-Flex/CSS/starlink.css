@@ -1,0 +1,221 @@
+.starlink-container{
+    width:95%;
+    max-width:1600px;
+
+    margin:130px auto 50px;
+
+    display:flex;
+    gap:30px;
+}
+
+/* ESQUERDA */
+
+.produto-esquerda{
+    flex:2;
+}
+
+.titulo-produto{
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.avaliacao{
+    margin-bottom:20px;
+}
+
+.imagem-box{
+    background:#1b1b1b;
+
+    border-radius:20px;
+
+    padding:30px;
+}
+
+#imagem-principal{
+    width:100%;
+    max-height:700px;
+    object-fit:contain;
+}
+
+/* MINIATURAS */
+
+.miniaturas{
+    display:flex;
+    gap:15px;
+    margin-top:20px;
+}
+
+.miniaturas img{
+    width:100px;
+    height:100px;
+
+    object-fit:contain;
+
+    background:#1b1b1b;
+
+    border-radius:15px;
+
+    padding:10px;
+
+    cursor:pointer;
+
+    border:2px solid #333;
+}
+
+.miniaturas img:hover{
+    border-color:red;
+}
+
+/* DIREITA */
+
+.produto-direita{
+    flex:1;
+
+    background:#161616;
+
+    border-radius:20px;
+
+    padding:30px;
+}
+
+.produto-preco{
+    color:#ff2d2d;
+
+    font-size:4rem;
+    font-weight:bold;
+
+    margin-bottom:20px;
+}
+
+.vendido{
+    margin-bottom:25px;
+}
+
+/* CONDIÇÕES */
+
+.condicoes-venda{
+    color:#aaa;
+    line-height:1.8;
+}
+
+.condicoes-venda a{
+    color:white;
+}
+
+/* BOTÃO */
+
+.btn-comprar{
+    width:100%;
+
+    margin-top:30px;
+
+    border:none;
+
+    background:#d40000;
+    color:white;
+
+    padding:22px;
+
+    border-radius:50px;
+
+    font-size:20px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+/* ENTREGA */
+
+.entrega-box{
+    margin-top:30px;
+}
+
+.entrega-info{
+    background:#1f1f1f;
+
+    margin-top:15px;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    display:flex;
+    justify-content:space-between;
+}
+
+/* VENDEDOR */
+
+.vendedor-box{
+    background:#1b1b1b;
+
+    margin-top:30px;
+
+    border-radius:15px;
+
+    padding:25px;
+}
+
+.score{
+    background:#111;
+
+    padding:20px;
+
+    border-radius:15px;
+
+    margin-top:20px;
+}
+
+.vendas{
+    margin-top:10px;
+    font-weight:bold;
+}
+
+.devolucao{
+    margin-top:25px;
+    font-weight:bold;
+}
+
+.perguntar{
+    margin-top:25px;
+    font-weight:bold;
+}
+
+/* OUTRAS OFERTAS */
+
+.outras-ofertas{
+    background:#1b1b1b;
+
+    margin-top:30px;
+
+    border-radius:15px;
+
+    padding:25px;
+}
+
+.preco-vermelho{
+    color:red;
+    font-weight:bold;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .starlink-container{
+        flex-direction:column;
+    }
+
+    .produto-direita{
+        width:100%;
+    }
+
+    .produto-preco{
+        font-size:2.5rem;
+    }
+
+    .miniaturas{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+}

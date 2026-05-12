@@ -3,182 +3,213 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FlexBox</title>
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/mobile.css">
+    <title>Negócio</title>
 
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer" />
+        href="CSS/style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 
 <body>
 
-    <header>
-        <div class="logotipo">
-            <img src="img/flexbox.png" alt="Logotipo da empresa" width="60" height="60">
-            <p>Negócio</p>
+<header>
+
+    <div class="logotipo">
+
+        <img src="img/flexbox.png"
+            alt="Logo">
+
+        <p>Negócio</p>
+
+    </div>
+
+    <nav>
+
+        <ul class="links">
+
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Produtos</a></li>
+            <li><a href="#">Serviços</a></li>
+            <li><a href="#">Contactos</a></li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+<main>
+
+    <!-- BANNER -->
+
+    <section class="banner">
+
+        <img src="img/banner.jpg"
+            alt="Banner">
+
+        <div class="titulo">
+
+            <h1>
+                Promoção de 50%
+            </h1>
+
+            <p>
+                Aproveite as melhores promoções
+            </p>
+
         </div>
 
-        <nav>
-            <ul class="links">
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Produtos</a></li>
-                <li><a href="#">Serviços</a></li>
-                <li><a href="#">Contactos</a></li>
-                <li>
-                    <a href="#">
-                        <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    </section>
 
-    <main>
+    <!-- PRODUTOS -->
 
-        <!-- Banner -->
-        <section class="banner">
-            <img src="img/banner.jpg" alt="Banner">
+    <section class="container">
 
-            <div class="titulo">
-                <h1>Promoção de 50%</h1>
-                <p>Aproveite a nossa promoção até ao dia 30 de Abril!</p>
-            </div>
-        </section>
+        <h2>
+            Produtos em Destaque
+        </h2>
 
-        <!-- Produtos -->
-        <section class="container">
+        <div class="cards">
 
-            <h2>Produtos em Destaque</h2>
+            <!-- PRODUTO -->
 
-            <div class="cards">
+            <div class="card">
 
-                <!-- Produto 1 -->
-                <div class="card">
-                    <img src="img/produtos/aspirador.png" alt="Aspirador">
-                    <p class="preco">€179,00</p>
-                    <p>Aspirador Robô IROBOT Roomba 105</p>
+                <a href="pages/starlink.html">
+
+                    <img src="img/produtos/aspirador.png">
+
+                </a>
+
+                <p class="preco">
+                    €179,00
+                </p>
+
+                <p>
+                    Aspirador Robô Inteligente
+                </p>
+
+                <a href="pages/starlink.html">
+
                     <button>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        Adicionar ao Carrinho
-                    </button>
-                </div>
 
-                <!-- Produto 2 -->
-                <div class="card">
-                    <img src="img/produtos/cadeira_de_escritório.png" alt="cadeira_de_escritório">
-                    <p class="preco">€49,99</p>
-                    <p>Teclado Mecânico RGB Gaming</p>
-                    <button>
                         <i class="fa-solid fa-cart-shopping"></i>
-                        Adicionar ao Carrinho
-                    </button>
-                </div>
 
-                <!-- Produto 3 -->
-                <div class="card">
-                    <img src="img/produtos/rato.png" alt="Rato">
-                    <p class="preco">€29,99</p>
-                    <p>Rato Gaming RGB Alta Precisão</p>
-                    <button>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        Adicionar ao Carrinho
-                    </button>
-                </div>
+                        Ver Produto
 
-                <!-- Produto 4 -->
-                <div class="card">
-                    <img src="img/produtos/computador.png" alt="Computador">
-                    <p class="preco">€79,99</p>
-                    <p>Headset Gaming com Microfone</p>
-                    <button>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        Adicionar ao Carrinho
                     </button>
-                </div>
 
-                <!-- Produto 5 -->
-                <div class="card">
-                    <img src="img/produtos/conjunto_jardim.png" alt="conjunto de jardim">
-                    <p class="preco">€199,99</p>
-                    <p>Monitor Full HD 24 Polegadas</p>
-                    <button>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        Adicionar ao Carrinho
-                    </button>
-                </div>
-
-                <!-- Produto 6 -->
-                <div class="card">
-                    <img src="img/produtos/maquina_de_café.png" alt="Máquina de Café">
-                    <p class="preco">€899,99</p>
-                    <p>Portátil Intel i7 16GB RAM SSD</p>
-                    <button>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        Adicionar ao Carrinho
-                    </button>
-                </div>
-
-                <!-- Produto 7 -->
-                <div class="card">
-                    <img src="img/produtos/maquina_fotográfica.png" alt="Máquina Fotográfica">
-                    <p class="preco">€149,99</p>
-                    <p>Impressora Wi-Fi Multifuncional</p>
-                    <button>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        Adicionar ao Carrinho
-                    </button>
-                </div>
-
-                <!-- Produto 8 -->
-                <div class="card">
-                    <img src="img/produtos/máquina_lavar_loiça.png" alt="máquina de lavar loiça">
-                    <p class="preco">€89,99</p>
-                    <p>SSD NVMe 1TB Alta Velocidade</p>
-                    <button>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        Adicionar ao Carrinho
-                    </button>
-                </div>
-
-                <!-- Produto 9 -->
-                <div class="card">
-                    <img src="img/produtos/webcam.png" alt="Webcam">
-                    <p class="preco">€39,99</p>
-                    <p>Webcam Full HD para Streaming</p>
-                    <button>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        Adicionar ao Carrinho
-                    </button>
-                </div>
-
-                <!-- Produto 10 -->
-                <div class="card">
-                    <img src="img/produtos/router.png" alt="Router">
-                    <p class="preco">€99,99</p>
-                    <p>Router Wi-Fi 6 Alta Velocidade</p>
-                    <button>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        Adicionar ao Carrinho
-                    </button>
-                </div>
+                </a>
 
             </div>
-        </section>
 
-    </main>
+            <!-- PRODUTO -->
 
-    <footer>
-        <p>&copy; 2026 Negócio - Todos os direitos reservados</p>
-    </footer>
+            <div class="card">
+
+                <a href="pages/starlink.html">
+
+                    <img src="img/produtos/computador.png">
+
+                </a>
+
+                <p class="preco">
+                    €899,99
+                </p>
+
+                <p>
+                    Computador Gaming
+                </p>
+
+                <a href="pages/starlink.html">
+
+                    <button>
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        Ver Produto
+
+                    </button>
+
+                </a>
+
+            </div>
+
+            <!-- PRODUTO -->
+
+            <div class="card">
+
+                <a href="pages/starlink.html">
+
+                    <img src="img/produtos/tablet.png">
+
+                </a>
+
+                <p class="preco">
+                    €349,99
+                </p>
+
+                <p>
+                    Tablet Android
+                </p>
+
+                <a href="pages/starlink.html">
+
+                    <button>
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        Ver Produto
+
+                    </button>
+
+                </a>
+
+            </div>
+
+            <!-- PRODUTO -->
+
+            <div class="card">
+
+                <a href="pages/starlink.html">
+
+                    <img src="img/produtos/telemovel.png">
+
+                </a>
+
+                <p class="preco">
+                    €699,99
+                </p>
+
+                <p>
+                    Smartphone Última Geração
+                </p>
+
+                <a href="pages/starlink.html">
+
+                    <button>
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                        Ver Produto
+
+                    </button>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
 
 </body>
-
 </html>
