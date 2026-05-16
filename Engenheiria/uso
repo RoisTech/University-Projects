@@ -1,0 +1,58 @@
+@startuml
+title Cyber Defense SOC Platform — Diagrama de Casos de Uso
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Analista SOC" as Analista
+actor "Coordenador de Incidentes" as Coordenador
+actor "Sistema de Firewall Externo" as Firewall
+
+rectangle "Plataforma de Gestão de Incidentes de Cibersegurança" {
+
+    usecase "Visualizar Alertas" as UC1
+    usecase "Atribuir Incidente" as UC2
+    usecase "Executar Playbook\nde Contenção" as UC3
+    usecase "Reconhecer Alerta\nCrítico" as UC4
+    usecase "Consultar Dashboards\nde MTTR" as UC5
+    usecase "Autenticar\nUtilizador" as UC6
+    usecase "Bloquear IP\nno Firewall" as UC7
+    usecase "Auditar Ação\nDefensiva" as UC8
+}
+
+'========================
+' RELAÇÕES DOS ATORES
+'========================
+
+Analista --> UC1
+Analista --> UC3
+Analista --> UC4
+Analista --> UC5
+
+Coordenador --> UC2
+Coordenador --> UC3
+Coordenador --> UC5
+Coordenador --> UC8
+
+Firewall --> UC7
+
+'========================
+' INCLUDE (Obrigatório)
+'========================
+
+UC1 ..> UC6 : <<include>>
+UC3 ..> UC6 : <<include>>
+
+'========================
+' EXTEND (Condicional)
+'========================
+
+UC8 ..> UC3 : <<extend>>
+
+'========================
+' RELAÇÕES FUNCIONAIS
+'========================
+
+UC3 --> UC7 : executa
+
+@enduml
