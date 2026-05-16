@@ -1,0 +1,127 @@
+@startuml
+title CyberLab Guardian — Diagrama de Classes
+
+skinparam classAttributeIconSize 0
+
+'=========================
+' CLASSES PRINCIPAIS
+'=========================
+
+class Utilizador {
+    - id: int
+    - nome: String
+    - email: String
+    - perfilAcesso: String
+    + autenticar(): boolean
+    + visualizarAlertas(): void
+}
+
+class AnalistaSeguranca {
+    + analisarIncidente(): void
+    + classificarRisco(): String
+}
+
+class AdministradorSistema {
+    + bloquearIP(ip: String): void
+    + isolarDispositivo(dispositivo: Dispositivo): void
+}
+
+class Dispositivo {
+    - id: int
+    - hostname: String
+    - enderecoIP: String
+    - estado: String
+    - sistemaOperativo: String
+    + isolar(): void
+    + restaurarLigacao(): void
+}
+
+class Incidente {
+    - id: int
+    - severidade: String
+    - dataCriacao: Date
+    - estado: String
+    + classificarRisco(): String
+    + encerrar(): void
+}
+
+class Alerta {
+    - id: int
+    - timestamp: DateTime
+    - origem: String
+    - severidade: String
+    + validar(): boolean
+}
+
+class AlertaDeRede {
+    - ipOrigem: String
+    - portaDestino: int
+    + analisarTrafego(): void
+}
+
+class AlertaDeAutenticacao {
+    - utilizadorAlvo: String
+    - tentativasFalhadas: int
+    + verificarAcessoSuspeito(): boolean
+}
+
+class RegraBloqueio {
+    - id: int
+    - ipBloqueado: String
+    - motivo: String
+    - dataCriacao: DateTime
+    + executarBloqueio(): boolean
+}
+
+class FirewallAdapter {
+    - firewallAPI: String
+    + bloquearIP(ip: String): boolean
+    + desbloquearIP(ip: String): boolean
+}
+
+class Relatorio {
+    - id: int
+    - dataGeracao: Date
+    - formato: String
+    + gerarPDF(): void
+    + exportar(): void
+}
+
+'=========================
+' HERANÇA
+'=========================
+
+Utilizador <|-- AnalistaSeguranca
+Utilizador <|-- AdministradorSistema
+
+Alerta <|-- AlertaDeRede
+Alerta <|-- AlertaDeAutenticacao
+
+'=========================
+' COMPOSIÇÃO
+'=========================
+
+Incidente "1" *-- "1..*" Alerta : possui
+
+'=========================
+' AGREGAÇÃO
+'=========================
+
+AdministradorSistema "1" o-- "*" RegraBloqueio : gere
+
+'=========================
+' ASSOCIAÇÕES
+'=========================
+
+AnalistaSeguranca "1" --> "*" Incidente : analisa
+
+Incidente "1" --> "1" Dispositivo : afeta
+
+AdministradorSistema "1" --> "*" Dispositivo : isola
+
+RegraBloqueio "1" --> "1" FirewallAdapter : executa
+
+AnalistaSeguranca "1" --> "*" Relatorio : gera
+AdministradorSistema "1" --> "*" Relatorio : gera
+
+@enduml

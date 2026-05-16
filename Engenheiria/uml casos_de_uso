@@ -1,0 +1,47 @@
+@startuml
+title CyberLab Guardian — Diagrama de Casos de Uso
+
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Analista de Segurança" as Analista
+actor "Administrador do Sistema" as Admin
+actor "Sistema de Firewall" as Firewall
+
+rectangle "CyberLab Guardian" {
+
+    usecase "Autenticar no Sistema" as UC1
+    usecase "Visualizar Alertas" as UC2
+    usecase "Analisar Incidente" as UC3
+    usecase "Isolar Dispositivo" as UC4
+    usecase "Gerar Relatório" as UC5
+    usecase "Bloquear IP" as UC6
+    usecase "Exportar para PDF" as UC7
+
+}
+
+' Relações do Analista de Segurança
+Analista --> UC1
+Analista --> UC2
+Analista --> UC3
+Analista --> UC5
+
+' Relações do Administrador do Sistema
+Admin --> UC1
+Admin --> UC2
+Admin --> UC3
+Admin --> UC4
+Admin --> UC5
+Admin --> UC6
+
+' Sistema Externo / Secundário
+Firewall --> UC6
+Firewall --> UC4
+
+' Relação include obrigatória
+UC3 ..> UC1 : <<include>>
+
+' Relação extend opcional
+UC7 ..> UC5 : <<extend>>
+
+@enduml

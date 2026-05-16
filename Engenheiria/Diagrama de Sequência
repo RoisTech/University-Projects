@@ -1,0 +1,53 @@
+@startuml
+title CyberLab Guardian — Diagrama de Sequência
+title Isolamento Automatizado de Dispositivo
+
+autonumber
+
+participant ":PainelWeb" as Painel
+participant ":GestorIncidentes" as Gestor
+participant ":ServicoRede" as Rede
+participant ":AgenteDispositivo" as Agente
+
+== Início do Processo ==
+
+Painel -> Gestor : solicitarIsolamento(dispositivoId)
+activate Gestor
+
+Gestor -> Rede : executarIsolamento(dispositivoId)
+activate Rede
+
+Rede -> Agente : aplicarPoliticaIsolamento()
+activate Agente
+
+alt Sucesso no isolamento
+
+    Agente --> Rede : sucesso()
+    deactivate Agente
+
+    Rede --> Gestor : isolamentoExecutado
+    deactivate Rede
+
+    Gestor -> Gestor : atualizarEstado("Isolado")
+
+    Gestor --> Painel : exibirMensagemSucesso()
+    deactivate Gestor
+
+else Timeout ou Falha
+
+    Agente --> Rede : timeout/erro()
+    deactivate Agente
+
+    Rede --> Gestor : falhaIsolamento
+    deactivate Rede
+
+    Gestor -> Gestor : registarErro()
+
+    Gestor -> Painel : notificarAdministrador()
+    Gestor --> Painel : exibirErro()
+
+    deactivate Gestor
+
+end
+
+@enduml

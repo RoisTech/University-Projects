@@ -1,0 +1,25 @@
+@startuml
+title CyberLab Guardian — Diagrama de Estados
+title Ciclo de Vida do Incidente
+
+[*] --> Criado : criarIncidente()
+
+state "Criado" as Criado
+state "Em Análise" as EmAnalise
+state "Mitigado" as Mitigado
+state "Aguardando Aprovação" as Aprovacao
+state "Fechado" as Fechado
+
+Criado --> EmAnalise : atribuirAnalista()
+
+EmAnalise --> Mitigado : resolucaoBemSucedida()
+
+EmAnalise --> Aprovacao : requerAprovacaoSuperior()
+
+Aprovacao --> Mitigado : aprovacaoConcedida()
+
+Mitigado --> Fechado : encerrarIncidente()
+
+Fechado --> [*]
+
+@enduml
