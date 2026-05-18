@@ -3,16 +3,9 @@ from tkinter import messagebox
 
 import mysql.connector
 import ttkbootstrap as ttk
+from config import DB_CONFIG, FORMACAO_PATH, THEME, WINDOW_HEIGHT, WINDOW_WIDTH
 from tkintermapview import TkinterMapView
 from ttkbootstrap.constants import *
-
-from config import (
-    DB_CONFIG,
-    FORMACAO_PATH,
-    THEME,
-    WINDOW_WIDTH,
-    WINDOW_HEIGHT
-)
 
 
 class FireCommandGUI:
@@ -278,28 +271,88 @@ class FireCommandGUI:
             "🚒 Sistema de despacho em desenvolvimento."
         )
 
+        # ==================================================
+    # FORMAÇÃO
+    # ==================================================
+
+    def abrir_formacao(self):
+
+        try:
+
+            if os.path.exists(FORMACAO_PATH):
+
+                os.startfile(FORMACAO_PATH)
+
+            else:
+
+                messagebox.showwarning(
+                    "Formação",
+                    "A pasta de formação não existe."
+                )
+
+        except Exception as erro:
+
+            messagebox.showerror(
+                "Erro",
+                f"Erro ao abrir formação:\n\n{erro}"
+            )
+
     # ==================================================
     # ESTATÍSTICAS
     # ==================================================
 
     def abrir_estatisticas(self):
 
-        conexao = self.ligar_bd()
-        cursor = conexao.cursor()
+        try:
 
-        cursor.execute(
-            "SELECT COUNT(*) FROM quarteis"
-        )
+            conexao = self.ligar_bd()
+            cursor = conexao.cursor()
 
-        total_quarteis = cursor.fetchone()[0]
+            cursor.execute(
+                "SELECT COUNT(*) FROM quarteis"
+            )
 
-        cursor.execute(
-            "SELECT COUNT(*) FROM ocorrencias"
-        )
+            total_quarteis = cursor.fetchone()[0]
 
-        total_ocorrencias = cursor.fetchone()[0]
+            cursor.execute(
+                "SELECT COUNT(*) FROM ocorrencias"
+            )
 
-        cursor.close()
-        conexao.close()
+            total_ocorrencias = cursor.fetchone()[0]
 
-       
+            cursor.close()
+            conexao.close()
+
+            messagebox.showinfo(
+                "📊 Estatísticas",
+                f"🚒 Quartéis: {total_quarteis}\n"
+                f"🔥 Ocorrências: {total_ocorrencias}"
+            )
+
+        except Exception as erro:
+
+            messagebox.showerror(
+                "Erro",
+                f"Erro ao carregar estatísticas:\n\n{erro}"
+            )
+
+    # ==================================================
+    # MÉTODOS AUXILIARES
+    # ==================================================
+
+    def carregar_quarteis(self):
+        pass
+
+    def carregar_ocorrencias(self):
+        pass
+
+    def clique_mapa(self, coordenadas):
+        print("Mapa:", coordenadas)
+
+    # ==================================================
+    # INICIAR APP
+    # ==================================================
+
+    def iniciar(self):
+
+        self.app.mainloop()
