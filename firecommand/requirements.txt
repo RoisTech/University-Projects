@@ -1,0 +1,8 @@
+ttkbootstrap
+tkintermapview
+mysql-connector-python
+pillow
+geopy
+matplotlib
+pandas
+numpy

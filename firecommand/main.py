@@ -1,5 +1,11 @@
-﻿from interface.menu import menu
+from gui import FireCommandGUI
+
+
+def main():
+
+    sistema = FireCommandGUI()
+    sistema.iniciar()
+
 
 if __name__ == "__main__":
-    menu()
-6
+    main()

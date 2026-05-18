@@ -1,162 +1,305 @@
-import tkinter as tk
+import os
 from tkinter import messagebox
 
-from utils.ficheiros import ler_csv
-from core.simulador import simular
-from modulos.analise import estatisticas
-from modulos.incidentes import guardar_incidente
-from modulos.recursos import guardar_recurso
-from modulos.ia import gerar_cenario
-import os
+import mysql.connector
+import ttkbootstrap as ttk
+from tkintermapview import TkinterMapView
+from ttkbootstrap.constants import *
 
-# =========================
-# INICIALIZAR DADOS (NOVO)
-# =========================
+from config import (
+    DB_CONFIG,
+    FORMACAO_PATH,
+    THEME,
+    WINDOW_WIDTH,
+    WINDOW_HEIGHT
+)
 
-base = "dados"
 
-incidentes_path = os.path.join(base, "incidentes.csv")
-recursos_path = os.path.join(base, "recursos.csv")
+class FireCommandGUI:
 
-os.makedirs(base, exist_ok=True)
+    def __init__(self):
 
-# criar cabeçalho incidentes
-if not os.path.exists(incidentes_path):
-    with open(incidentes_path, "w", encoding="utf-8") as f:
-        f.write("tipo,gravidade,vento,temperatura,x,y\n")
+        self.app = ttk.Window(
+            title="🚒 FireCommand Pro - Centro Operacional",
+            themename=THEME,
+            size=(WINDOW_WIDTH, WINDOW_HEIGHT),
+            resizable=(True, True)
+        )
 
-# criar cabeçalho recursos
-if not os.path.exists(recursos_path):
-    with open(recursos_path, "w", encoding="utf-8") as f:
-        f.write("bombeiros,veiculos\n")
+        self.modo_mapa = None
+        self.quartel_temp = {}
+        self.ocorrencia_temp = {}
 
-# =========================
-# FUNÇÕES
-# =========================
+        self.criar_interface()
+        self.carregar_quarteis()
+        self.carregar_ocorrencias()
 
-def novo_incidente():
-    janela = tk.Toplevel()
-    janela.title("Novo Incidente")
+    # ==================================================
+    # BASE DE DADOS
+    # ==================================================
 
-    entries = {}
+    def ligar_bd(self):
 
-    for campo in ["tipo", "gravidade", "vento", "temperatura", "x", "y"]:
-        tk.Label(janela, text=campo).pack()
-        e = tk.Entry(janela)
-        e.pack()
-        entries[campo] = e
+        return mysql.connector.connect(
+            host=DB_CONFIG["host"],
+            port=DB_CONFIG["port"],
+            user=DB_CONFIG["user"],
+            password=DB_CONFIG["password"],
+            database=DB_CONFIG["database"]
+        )
 
-    def guardar():
-        try:
-            incidente = {k: int(v.get()) if k != "tipo" else v.get() for k, v in entries.items()}
-            guardar_incidente(incidente)
-            messagebox.showinfo("OK", "Guardado!")
+    # ==================================================
+    # INTERFACE
+    # ==================================================
+
+    def criar_interface(self):
+
+        # ==========================================
+        # SIDEBAR
+        # ==========================================
+
+        self.sidebar = ttk.Frame(
+            self.app,
+            width=350
+        )
+
+        self.sidebar.pack(
+            side=LEFT,
+            fill=Y
+        )
+
+        ttk.Label(
+            self.sidebar,
+            text="🚒 FIRECOMMAND",
+            font=("Segoe UI", 24, "bold")
+        ).pack(pady=20)
+
+        ttk.Separator(self.sidebar).pack(
+            fill=X,
+            padx=10,
+            pady=10
+        )
+
+        # ==========================================
+        # BOTÕES
+        # ==========================================
+
+        botoes = [
+
+            ("🚒 Quartéis", "danger", self.abrir_quarteis),
+            ("🔥 Ocorrências", "warning", self.abrir_ocorrencias),
+            ("🚒 Despacho", "info", self.abrir_despacho),
+            ("📚 Formação", "secondary", self.abrir_formacao),
+            ("📊 Estatísticas", "success", self.abrir_estatisticas),
+            ("❌ Sair", "secondary", self.app.destroy)
+
+        ]
+
+        for texto, estilo, comando in botoes:
+
+            ttk.Button(
+                self.sidebar,
+                text=texto,
+                bootstyle=estilo,
+                command=comando
+            ).pack(
+                fill=X,
+                padx=10,
+                pady=5
+            )
+
+        # ==========================================
+        # LISTA QUARTÉIS
+        # ==========================================
+
+        ttk.Label(
+            self.sidebar,
+            text="🚒 Quartéis",
+            font=("Segoe UI", 12, "bold")
+        ).pack(pady=10)
+
+        self.lista_quarteis = ttk.Treeview(
+            self.sidebar,
+            columns=("nome",),
+            show="headings",
+            height=8
+        )
+
+        self.lista_quarteis.heading(
+            "nome",
+            text="Nome"
+        )
+
+        self.lista_quarteis.pack(
+            fill=X,
+            padx=10,
+            pady=5
+        )
+
+        # ==========================================
+        # MAPA
+        # ==========================================
+
+        self.frame_mapa = ttk.Frame(self.app)
+
+        self.frame_mapa.pack(
+            fill=BOTH,
+            expand=True
+        )
+
+        self.mapa = TkinterMapView(
+            self.frame_mapa,
+            corner_radius=0
+        )
+
+        self.mapa.pack(
+            fill=BOTH,
+            expand=True
+        )
+
+        # MAPA CLARO PROFISSIONAL
+
+        self.mapa.set_tile_server(
+            "https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+        )
+
+        self.mapa.set_position(
+            39.5,
+            -8.0
+        )
+
+        self.mapa.set_zoom(7)
+
+        self.mapa.add_left_click_map_command(
+            self.clique_mapa
+        )
+
+    # ==================================================
+    # QUARTÉIS
+    # ==================================================
+
+    def abrir_quarteis(self):
+
+        janela = ttk.Toplevel(self.app)
+
+        janela.title("🚒 Criar Quartel")
+        janela.geometry("450x420")
+
+        ttk.Label(janela, text="Nome Quartel").pack(pady=5)
+
+        nome_entry = ttk.Entry(janela, width=40)
+        nome_entry.pack()
+
+        ttk.Label(janela, text="Tipo").pack(pady=5)
+
+        tipo_combo = ttk.Combobox(
+            janela,
+            values=[
+                "Voluntários",
+                "Sapadores",
+                "Municipais"
+            ],
+            state="readonly"
+        )
+
+        tipo_combo.pack()
+        tipo_combo.set("Voluntários")
+
+        ttk.Label(janela, text="Distrito").pack(pady=5)
+
+        distrito_combo = ttk.Combobox(
+            janela,
+            values=[
+                "Aveiro", "Beja", "Braga", "Bragança",
+                "Castelo Branco", "Coimbra", "Évora",
+                "Faro", "Guarda", "Leiria", "Lisboa",
+                "Portalegre", "Porto", "Santarém",
+                "Setúbal", "Viana do Castelo",
+                "Vila Real", "Viseu"
+            ],
+            state="readonly"
+        )
+
+        distrito_combo.pack()
+        distrito_combo.set("Lisboa")
+
+        def selecionar_local():
+
+            nome = nome_entry.get().strip()
+
+            if not nome:
+                messagebox.showerror(
+                    "Erro",
+                    "Introduza o nome do quartel."
+                )
+                return
+
+            self.quartel_temp = {
+                "nome": nome,
+                "tipo": tipo_combo.get(),
+                "distrito": distrito_combo.get()
+            }
+
+            self.modo_mapa = "quartel"
+
+            messagebox.showinfo(
+                "Mapa",
+                "Clique no mapa para posicionar o quartel."
+            )
+
             janela.destroy()
-        except:
-            messagebox.showerror("Erro", "Dados inválidos")
 
-    tk.Button(janela, text="Guardar", command=guardar).pack()
+        ttk.Button(
+            janela,
+            text="📍 Escolher Localização",
+            bootstyle="danger",
+            command=selecionar_local
+        ).pack(pady=20)
 
+    # ==================================================
+    # OCORRÊNCIAS
+    # ==================================================
 
-def novo_recurso():
-    janela = tk.Toplevel()
-    janela.title("Recursos")
+    def abrir_ocorrencias(self):
 
-    b = tk.Entry(janela)
-    v = tk.Entry(janela)
+        messagebox.showinfo(
+            "Ocorrências",
+            "Clique no mapa para criar ocorrências (próxima fase)."
+        )
 
-    tk.Label(janela, text="Bombeiros").pack()
-    b.pack()
-    tk.Label(janela, text="Veículos").pack()
-    v.pack()
+    # ==================================================
+    # DESPACHO
+    # ==================================================
 
-    def guardar():
-        try:
-            guardar_recurso({
-                "bombeiros": int(b.get()),
-                "veiculos": int(v.get())
-            })
-            messagebox.showinfo("OK", "Guardado!")
-            janela.destroy()
-        except:
-            messagebox.showerror("Erro", "Dados inválidos")
+    def abrir_despacho(self):
 
-    tk.Button(janela, text="Guardar", command=guardar).pack()
+        messagebox.showinfo(
+            "Despacho",
+            "🚒 Sistema de despacho em desenvolvimento."
+        )
 
+    # ==================================================
+    # ESTATÍSTICAS
+    # ==================================================
 
-def executar_sim():
-    messagebox.showinfo("Simulação", simular())
+    def abrir_estatisticas(self):
 
+        conexao = self.ligar_bd()
+        cursor = conexao.cursor()
 
-def ver_stats():
-    messagebox.showinfo("Stats", estatisticas())
+        cursor.execute(
+            "SELECT COUNT(*) FROM quarteis"
+        )
 
+        total_quarteis = cursor.fetchone()[0]
 
-def gerar_ia_gui():
-    c = gerar_cenario()
-    guardar_incidente(c)
-    messagebox.showinfo("IA", f"Cenário criado!\nLocal: ({c['x']},{c['y']})")
+        cursor.execute(
+            "SELECT COUNT(*) FROM ocorrencias"
+        )
 
+        total_ocorrencias = cursor.fetchone()[0]
 
-def mapa():
-    dados = ler_csv("dados/incidentes.csv")
+        cursor.close()
+        conexao.close()
 
-    if not dados:
-        messagebox.showerror("Erro", "Sem incidentes!")
-        return
-
-    inc_valido = None
-
-    for inc in reversed(dados):
-        try:
-            x = int(inc["x"])
-            y = int(inc["y"])
-            inc_valido = inc
-            break
-        except:
-            continue
-
-    if not inc_valido:
-        messagebox.showerror("Erro", "Nenhum dado válido!")
-        return
-
-    x = int(inc_valido["x"])
-    y = int(inc_valido["y"])
-
-    win = tk.Toplevel()
-    win.title("Mapa")
-
-    canvas = tk.Canvas(win, width=300, height=300)
-    canvas.pack()
-
-    size = 30
-
-    for i in range(10):
-        for j in range(10):
-            canvas.create_rectangle(i*size, j*size, (i+1)*size, (j+1)*size)
-
-    canvas.create_rectangle(x*size, y*size, (x+1)*size, (y+1)*size, fill="red")
-
-
-# =========================
-# UI
-# =========================
-
-root = tk.Tk()
-root.title("FireCommand")
-root.geometry("600x500")
-root.configure(bg="#1e1e1e")
-
-tk.Label(root, text="🔥 FireCommand", fg="white", bg="#1e1e1e", font=("Arial", 20)).pack(pady=20)
-
-def btn(txt, cmd):
-    return tk.Button(root, text=txt, width=30, height=2, command=cmd)
-
-btn("Novo Incidente", novo_incidente).pack(pady=5)
-btn("Adicionar Recursos", novo_recurso).pack(pady=5)
-btn("Simular", executar_sim).pack(pady=5)
-btn("Estatísticas", ver_stats).pack(pady=5)
-btn("Gerar Cenário IA", gerar_ia_gui).pack(pady=5)
-btn("Ver Mapa", mapa).pack(pady=5)
-
-root.mainloop()
+       

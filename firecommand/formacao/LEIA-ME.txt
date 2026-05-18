@@ -1,0 +1,25 @@
+======================================
+FIRECOMMAND - CENTRO DE FORMAÇÃO
+======================================
+
+COLOCA AQUI:
+
+- PPT
+- PPTX
+- PDF
+- MP4
+- AVI
+- DOCX
+- XLSX
+- PNG / JPG
+
+O SISTEMA DETETA AUTOMATICAMENTE
+AS APRESENTAÇÕES.
+
+PASTAS:
+
+ppt
+pdf
+videos
+imagens
+documentos
