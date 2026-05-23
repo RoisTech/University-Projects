@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos - Oficina Joaquin Luis Simões</title>
+    <meta name="description" content="Contacte a oficina Joaquin Luis Simões para marcação de serviços.">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topo-site">
+    <div class="barra-superior">
+        <div class="logo-area">
+            <img src="img/logo/logo.jpg" alt="Logotipo Joaquin Luís Simões">
+            <div class="titulo-site">
+                <h1>Joaquim Luís Simões</h1>
+                <p>Motos · Bicicletas · Jardinagem</p>
+            </div>
+        </div>
+
+        <nav class="menu-principal">
+            <a href="index.html">Início</a>
+            <a href="loja.html">Produtos</a>
+            <a href="compras.html">Compras</a>
+            <a href="servicos.html">Serviços</a>
+            <a href="contactos.html" class="ativo">Contactos</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- HERO COM MAPA -->
+    <section class="hero-video">
+        <div class="hero-mapa">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3124.276135!2d-8.691!3d39.233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRua%20das%20M%C3%A1quinas%20de%20Jardim%20123%2C%20Santar%C3%A9m!5e0!3m2!1spt-PT!2spt!4v0000000000"
+                width="100%"
+                height="320"
+                style="border:0;"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Mapa com localização da oficina">
+            </iframe>
+        </div>
+        <div class="hero-texto">
+            <h2>Visite a nossa oficina</h2>
+            <p>Estamos em Santarém, na Rua das Máquinas de Jardim, com estacionamento fácil à porta.</p>
+            <p>Use o formulário abaixo para marcar o serviço e garantir o melhor horário para si.</p>
+        </div>
+    </section>
+
+    <!-- CONTACTOS / MORADA -->
+    <section class="contactos">
+        <h2>Contactos e localização</h2>
+        <p>Morada fictícia: Rua das Máquinas de Jardim, 123, 2000-000 Santarém</p>
+        <p>Telefone: 912 345 678 · Email: oficina@exemplo.pt</p>
+
+        <h3>Marcação de serviço</h3>
+        <form action="#" method="post" class="form-servico">
+            <fieldset>
+                <legend>Dados do cliente</legend>
+
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone"
+                       pattern="[0-9]{9}" placeholder="9 dígitos">
+
+                <label for="equipamento">Tipo de equipamento</label>
+                <select id="equipamento" name="equipamento" required>
+                    <option value="">— escolher —</option>
+                    <option>Moto-serra</option>
+                    <option>Máquina de relva</option>
+                    <option>Roçadora</option>
+                    <option>Outro</option>
+                </select>
+
+                <label for="data">Data preferida</label>
+                <input type="date" id="data" name="data">
+
+                <label for="mensagem">Descrição do problema</label>
+                <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+
+                <button type="submit">Enviar pedido</button>
+            </fieldset>
+        </form>
+    </section>
+
+    <!-- HORÁRIO -->
+    <section class="horario">
+        <h3>Horário de funcionamento</h3>
+        <table>
+            <caption>Horário semanal</caption>
+            <thead>
+            <tr>
+                <th>Dia</th>
+                <th>Abertura</th>
+                <th>Fecho</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Segunda a Sexta</td>
+                <td>09:00</td>
+                <td>18:00</td>
+            </tr>
+            <tr>
+                <td>Sábado</td>
+                <td>09:00</td>
+                <td>13:00</td>
+            </tr>
+            <tr>
+                <td>Domingo</td>
+                <td colspan="2">Encerrado</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- COMO CHEGAR -->
+    <section class="como-chegar">
+        <h3>Como chegar</h3>
+        <p>A oficina situa-se na zona industrial de Santarém, com estacionamento
+           fácil à porta. Pode chegar de carro pela EN3 ou utilizar os autocarros
+           urbanos com paragem a 5 minutos a pé.</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Joaquin Luis Simões - Oficina e Loja de Moto-serras &amp; Máquinas de Relva</p>
+</footer>
+</body>
+</html>
