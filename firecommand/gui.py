@@ -10,349 +10,349 @@ from ttkbootstrap.constants import *
 
 class FireCommandGUI:
 
-    def __init__(self):
+        def __init__(self):
 
-        self.app = ttk.Window(
-            title="🚒 FireCommand Pro - Centro Operacional",
-            themename=THEME,
-            size=(WINDOW_WIDTH, WINDOW_HEIGHT),
-            resizable=(True, True)
-        )
+            self.app = ttk.Window(
+                title="🚒 FireCommand Pro - Centro Operacional",
+                themename=THEME,
+                size=(WINDOW_WIDTH, WINDOW_HEIGHT),
+                resizable=(True, True)
+            )
 
-        self.modo_mapa = None
-        self.quartel_temp = {}
-        self.ocorrencia_temp = {}
+            self.modo_mapa = None
+            self.quartel_temp = {}
+            self.ocorrencia_temp = {}
 
-        self.criar_interface()
-        self.carregar_quarteis()
-        self.carregar_ocorrencias()
+            self.criar_interface()
+            self.carregar_quarteis()
+            self.carregar_ocorrencias()
 
-    # ==================================================
-    # BASE DE DADOS
-    # ==================================================
+        # ==================================================
+        # BASE DE DADOS
+        # ==================================================
 
-    def ligar_bd(self):
+        def ligar_bd(self):
 
-        return mysql.connector.connect(
-            host=DB_CONFIG["host"],
-            port=DB_CONFIG["port"],
-            user=DB_CONFIG["user"],
-            password=DB_CONFIG["password"],
-            database=DB_CONFIG["database"]
-        )
+            return mysql.connector.connect(
+                host=DB_CONFIG["host"],
+                port=DB_CONFIG["port"],
+                user=DB_CONFIG["user"],
+                password=DB_CONFIG["password"],
+                database=DB_CONFIG["database"]
+            )
 
-    # ==================================================
-    # INTERFACE
-    # ==================================================
+        # ==================================================
+        # INTERFACE
+        # ==================================================
 
-    def criar_interface(self):
+        def criar_interface(self):
 
-        # ==========================================
-        # SIDEBAR
-        # ==========================================
+            # ==========================================
+            # SIDEBAR
+            # ==========================================
 
-        self.sidebar = ttk.Frame(
-            self.app,
-            width=350
-        )
+            self.sidebar = ttk.Frame(
+                self.app,
+                width=350
+            )
 
-        self.sidebar.pack(
-            side=LEFT,
-            fill=Y
-        )
+            self.sidebar.pack(
+                side=LEFT,
+                fill=Y
+            )
 
-        ttk.Label(
-            self.sidebar,
-            text="🚒 FIRECOMMAND",
-            font=("Segoe UI", 24, "bold")
-        ).pack(pady=20)
-
-        ttk.Separator(self.sidebar).pack(
-            fill=X,
-            padx=10,
-            pady=10
-        )
-
-        # ==========================================
-        # BOTÕES
-        # ==========================================
-
-        botoes = [
-
-            ("🚒 Quartéis", "danger", self.abrir_quarteis),
-            ("🔥 Ocorrências", "warning", self.abrir_ocorrencias),
-            ("🚒 Despacho", "info", self.abrir_despacho),
-            ("📚 Formação", "secondary", self.abrir_formacao),
-            ("📊 Estatísticas", "success", self.abrir_estatisticas),
-            ("❌ Sair", "secondary", self.app.destroy)
-
-        ]
-
-        for texto, estilo, comando in botoes:
-
-            ttk.Button(
+            ttk.Label(
                 self.sidebar,
-                text=texto,
-                bootstyle=estilo,
-                command=comando
-            ).pack(
+                text="🚒 FIRECOMMAND",
+                font=("Segoe UI", 24, "bold")
+            ).pack(pady=20)
+
+            ttk.Separator(self.sidebar).pack(
+                fill=X,
+                padx=10,
+                pady=10
+            )
+
+            # ==========================================
+            # BOTÕES
+            # ==========================================
+
+            botoes = [
+
+                ("🚒 Quartéis", "danger", self.abrir_quarteis),
+                ("🔥 Ocorrências", "warning", self.abrir_ocorrencias),
+                ("🚒 Despacho", "info", self.abrir_despacho),
+                ("📚 Formação", "secondary", self.abrir_formacao),
+                ("📊 Estatísticas", "success", self.abrir_estatisticas),
+                ("❌ Sair", "secondary", self.app.destroy)
+
+            ]
+
+            for texto, estilo, comando in botoes:
+
+                ttk.Button(
+                    self.sidebar,
+                    text=texto,
+                    bootstyle=estilo,
+                    command=comando
+                ).pack(
+                    fill=X,
+                    padx=10,
+                    pady=5
+                )
+
+            # ==========================================
+            # LISTA QUARTÉIS
+            # ==========================================
+
+            ttk.Label(
+                self.sidebar,
+                text="🚒 Quartéis",
+                font=("Segoe UI", 12, "bold")
+            ).pack(pady=10)
+
+            self.lista_quarteis = ttk.Treeview(
+                self.sidebar,
+                columns=("nome",),
+                show="headings",
+                height=8
+            )
+
+            self.lista_quarteis.heading(
+                "nome",
+                text="Nome"
+            )
+
+            self.lista_quarteis.pack(
                 fill=X,
                 padx=10,
                 pady=5
             )
 
-        # ==========================================
-        # LISTA QUARTÉIS
-        # ==========================================
+            # ==========================================
+            # MAPA
+            # ==========================================
 
-        ttk.Label(
-            self.sidebar,
-            text="🚒 Quartéis",
-            font=("Segoe UI", 12, "bold")
-        ).pack(pady=10)
+            self.frame_mapa = ttk.Frame(self.app)
 
-        self.lista_quarteis = ttk.Treeview(
-            self.sidebar,
-            columns=("nome",),
-            show="headings",
-            height=8
-        )
-
-        self.lista_quarteis.heading(
-            "nome",
-            text="Nome"
-        )
-
-        self.lista_quarteis.pack(
-            fill=X,
-            padx=10,
-            pady=5
-        )
-
-        # ==========================================
-        # MAPA
-        # ==========================================
-
-        self.frame_mapa = ttk.Frame(self.app)
-
-        self.frame_mapa.pack(
-            fill=BOTH,
-            expand=True
-        )
-
-        self.mapa = TkinterMapView(
-            self.frame_mapa,
-            corner_radius=0
-        )
-
-        self.mapa.pack(
-            fill=BOTH,
-            expand=True
-        )
-
-        # MAPA CLARO PROFISSIONAL
-
-        self.mapa.set_tile_server(
-            "https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
-        )
-
-        self.mapa.set_position(
-            39.5,
-            -8.0
-        )
-
-        self.mapa.set_zoom(7)
-
-        self.mapa.add_left_click_map_command(
-            self.clique_mapa
-        )
-
-    # ==================================================
-    # QUARTÉIS
-    # ==================================================
-
-    def abrir_quarteis(self):
-
-        janela = ttk.Toplevel(self.app)
-
-        janela.title("🚒 Criar Quartel")
-        janela.geometry("450x420")
-
-        ttk.Label(janela, text="Nome Quartel").pack(pady=5)
-
-        nome_entry = ttk.Entry(janela, width=40)
-        nome_entry.pack()
-
-        ttk.Label(janela, text="Tipo").pack(pady=5)
-
-        tipo_combo = ttk.Combobox(
-            janela,
-            values=[
-                "Voluntários",
-                "Sapadores",
-                "Municipais"
-            ],
-            state="readonly"
-        )
-
-        tipo_combo.pack()
-        tipo_combo.set("Voluntários")
-
-        ttk.Label(janela, text="Distrito").pack(pady=5)
-
-        distrito_combo = ttk.Combobox(
-            janela,
-            values=[
-                "Aveiro", "Beja", "Braga", "Bragança",
-                "Castelo Branco", "Coimbra", "Évora",
-                "Faro", "Guarda", "Leiria", "Lisboa",
-                "Portalegre", "Porto", "Santarém",
-                "Setúbal", "Viana do Castelo",
-                "Vila Real", "Viseu"
-            ],
-            state="readonly"
-        )
-
-        distrito_combo.pack()
-        distrito_combo.set("Lisboa")
-
-        def selecionar_local():
-
-            nome = nome_entry.get().strip()
-
-            if not nome:
-                messagebox.showerror(
-                    "Erro",
-                    "Introduza o nome do quartel."
-                )
-                return
-
-            self.quartel_temp = {
-                "nome": nome,
-                "tipo": tipo_combo.get(),
-                "distrito": distrito_combo.get()
-            }
-
-            self.modo_mapa = "quartel"
-
-            messagebox.showinfo(
-                "Mapa",
-                "Clique no mapa para posicionar o quartel."
+            self.frame_mapa.pack(
+                fill=BOTH,
+                expand=True
             )
 
-            janela.destroy()
+            self.mapa = TkinterMapView(
+                self.frame_mapa,
+                corner_radius=0
+            )
 
-        ttk.Button(
-            janela,
-            text="📍 Escolher Localização",
-            bootstyle="danger",
-            command=selecionar_local
-        ).pack(pady=20)
+            self.mapa.pack(
+                fill=BOTH,
+                expand=True
+            )
 
-    # ==================================================
-    # OCORRÊNCIAS
-    # ==================================================
+            # MAPA CLARO PROFISSIONAL
 
-    def abrir_ocorrencias(self):
+            self.mapa.set_tile_server(
+                "https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+            )
 
-        messagebox.showinfo(
-            "Ocorrências",
-            "Clique no mapa para criar ocorrências (próxima fase)."
-        )
+            self.mapa.set_position(
+                39.5,
+                -8.0
+            )
 
-    # ==================================================
-    # DESPACHO
-    # ==================================================
+            self.mapa.set_zoom(7)
 
-    def abrir_despacho(self):
-
-        messagebox.showinfo(
-            "Despacho",
-            "🚒 Sistema de despacho em desenvolvimento."
-        )
+            self.mapa.add_left_click_map_command(
+                self.clique_mapa
+            )
 
         # ==================================================
-    # FORMAÇÃO
-    # ==================================================
+        # QUARTÉIS
+        # ==================================================
 
-    def abrir_formacao(self):
+        def abrir_quarteis(self):
 
-        try:
+            janela = ttk.Toplevel(self.app)
 
-            if os.path.exists(FORMACAO_PATH):
+            janela.title("🚒 Criar Quartel")
+            janela.geometry("450x420")
 
-                os.startfile(FORMACAO_PATH)
+            ttk.Label(janela, text="Nome Quartel").pack(pady=5)
 
-            else:
+            nome_entry = ttk.Entry(janela, width=40)
+            nome_entry.pack()
 
-                messagebox.showwarning(
-                    "Formação",
-                    "A pasta de formação não existe."
+            ttk.Label(janela, text="Tipo").pack(pady=5)
+
+            tipo_combo = ttk.Combobox(
+                janela,
+                values=[
+                    "Voluntários",
+                    "Sapadores",
+                    "Municipais"
+                ],
+                state="readonly"
+            )
+
+            tipo_combo.pack()
+            tipo_combo.set("Voluntários")
+
+            ttk.Label(janela, text="Distrito").pack(pady=5)
+
+            distrito_combo = ttk.Combobox(
+                janela,
+                values=[
+                    "Aveiro", "Beja", "Braga", "Bragança",
+                    "Castelo Branco", "Coimbra", "Évora",
+                    "Faro", "Guarda", "Leiria", "Lisboa",
+                    "Portalegre", "Porto", "Santarém",
+                    "Setúbal", "Viana do Castelo",
+                    "Vila Real", "Viseu"
+                ],
+                state="readonly"
+            )
+
+            distrito_combo.pack()
+            distrito_combo.set("Lisboa")
+
+            def selecionar_local():
+
+                nome = nome_entry.get().strip()
+
+                if not nome:
+                    messagebox.showerror(
+                        "Erro",
+                        "Introduza o nome do quartel."
+                    )
+                    return
+
+                self.quartel_temp = {
+                    "nome": nome,
+                    "tipo": tipo_combo.get(),
+                    "distrito": distrito_combo.get()
+                }
+
+                self.modo_mapa = "quartel"
+
+                messagebox.showinfo(
+                    "Mapa",
+                    "Clique no mapa para posicionar o quartel."
                 )
 
-        except Exception as erro:
+                janela.destroy()
 
-            messagebox.showerror(
-                "Erro",
-                f"Erro ao abrir formação:\n\n{erro}"
-            )
+            ttk.Button(
+                janela,
+                text="📍 Escolher Localização",
+                bootstyle="danger",
+                command=selecionar_local
+            ).pack(pady=20)
 
-    # ==================================================
-    # ESTATÍSTICAS
-    # ==================================================
+        # ==================================================
+        # OCORRÊNCIAS
+        # ==================================================
 
-    def abrir_estatisticas(self):
-
-        try:
-
-            conexao = self.ligar_bd()
-            cursor = conexao.cursor()
-
-            cursor.execute(
-                "SELECT COUNT(*) FROM quarteis"
-            )
-
-            total_quarteis = cursor.fetchone()[0]
-
-            cursor.execute(
-                "SELECT COUNT(*) FROM ocorrencias"
-            )
-
-            total_ocorrencias = cursor.fetchone()[0]
-
-            cursor.close()
-            conexao.close()
+        def abrir_ocorrencias(self):
 
             messagebox.showinfo(
-                "📊 Estatísticas",
-                f"🚒 Quartéis: {total_quarteis}\n"
-                f"🔥 Ocorrências: {total_ocorrencias}"
+                "Ocorrências",
+                "Clique no mapa para criar ocorrências (próxima fase)."
             )
 
-        except Exception as erro:
+        # ==================================================
+        # DESPACHO
+        # ==================================================
 
-            messagebox.showerror(
-                "Erro",
-                f"Erro ao carregar estatísticas:\n\n{erro}"
+        def abrir_despacho(self):
+
+            messagebox.showinfo(
+                "Despacho",
+                "🚒 Sistema de despacho em desenvolvimento."
             )
 
-    # ==================================================
-    # MÉTODOS AUXILIARES
-    # ==================================================
+            # ==================================================
+        # FORMAÇÃO
+        # ==================================================
 
-    def carregar_quarteis(self):
-        pass
+        def abrir_formacao(self):
 
-    def carregar_ocorrencias(self):
-        pass
+            try:
 
-    def clique_mapa(self, coordenadas):
-        print("Mapa:", coordenadas)
+                if os.path.exists(FORMACAO_PATH):
 
-    # ==================================================
-    # INICIAR APP
-    # ==================================================
+                    os.startfile(FORMACAO_PATH)
 
-    def iniciar(self):
+                else:
 
-        self.app.mainloop()
+                    messagebox.showwarning(
+                        "Formação",
+                        "A pasta de formação não existe."
+                    )
+
+            except Exception as erro:
+
+                messagebox.showerror(
+                    "Erro",
+                    f"Erro ao abrir formação:\n\n{erro}"
+                )
+
+        # ==================================================
+        # ESTATÍSTICAS
+        # ==================================================
+
+        def abrir_estatisticas(self):
+
+            try:
+
+                conexao = self.ligar_bd()
+                cursor = conexao.cursor()
+
+                cursor.execute(
+                    "SELECT COUNT(*) FROM quarteis"
+                )
+
+                total_quarteis = cursor.fetchone()[0]
+
+                cursor.execute(
+                    "SELECT COUNT(*) FROM ocorrencias"
+                )
+
+                total_ocorrencias = cursor.fetchone()[0]
+
+                cursor.close()
+                conexao.close()
+
+                messagebox.showinfo(
+                    "📊 Estatísticas",
+                    f"🚒 Quartéis: {total_quarteis}\n"
+                    f"🔥 Ocorrências: {total_ocorrencias}"
+                )
+
+            except Exception as erro:
+
+                messagebox.showerror(
+                    "Erro",
+                    f"Erro ao carregar estatísticas:\n\n{erro}"
+                )
+
+        # ==================================================
+        # MÉTODOS AUXILIARES
+        # ==================================================
+
+        def carregar_quarteis(self):
+            pass
+
+        def carregar_ocorrencias(self):
+            pass
+
+        def clique_mapa(self, coordenadas):
+            print("Mapa:", coordenadas)
+
+        # ==================================================
+        # INICIAR APP
+        # ==================================================
+
+        def iniciar(self):
+
+            self.app.mainloop()

@@ -1,25 +1,19 @@
-import mysql.connector
-from config import DB_CONFIG
+# database/db.py
+from database.conexao import obter_conexao
 
 
-def ligar_bd():
+def iniciar_bd():
+    conn = obter_conexao()
+    cursor = conn.cursor()
 
-    try:
-
-        conexao = mysql.connector.connect(
-            host=DB_CONFIG["host"],
-            port=DB_CONFIG["port"],
-            user=DB_CONFIG["user"],
-            password=DB_CONFIG["password"],
-            database=DB_CONFIG["database"]
+    # Exemplo: criar uma tabela de teste (ajusta para o teu modelo real)
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS exemplo (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            nome VARCHAR(50) NOT NULL
         )
+    """)
 
-        print("✅ Base de dados ligada.")
-
-        return conexao
-
-    except Exception as erro:
-
-        print(f"❌ Erro MySQL: {erro}")
-
-        return None
+    conn.commit()
+    cursor.close()
+    conn.close()

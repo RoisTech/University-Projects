@@ -1,505 +1,390 @@
 ﻿:root {
-    --cor-primaria: #145A32;
-    --cor-secundaria: #F39C12;
-    --cor-fundo: #F5F5F5;
-    --cor-texto: #222222;
-    --cor-card: #ffffff;
-    --cor-borda-suave: #e0e0e0;
-    --fonte-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-    --fonte-titulos: "Oswald", "Roboto Condensed", "Segoe UI", sans-serif;
+    --verde-principal: #145A32;
+    --verde-escuro: #0F4225;
+    --amarelo: #F39C12;
+    --cinza-fundo: #F5F5F5;
+    --texto: #222;
+    --branco: #FFFFFF;
+    --borda: #E0E0E0;
+
+    --fonte-base:
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    --fonte-titulo:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    --sombra:
+        0 4px 12px rgba(0,0,0,0.10);
+
+    --radius: 16px;
 }
 
-/* reset simples */
+/* ==========================
+   RESET
+========================== */
 
-html {
+* {
     margin: 0;
     padding: 0;
-    background-color: #145A32; /* garante que não há faixa branca no topo */
-}
-
-*,
-*::before,
-*::after {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    margin: 0;
-    padding: 0;
     font-family: var(--fonte-base);
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto);
+    background: var(--cinza-fundo);
+    color: var(--texto);
     line-height: 1.6;
 }
 
-/* TOPO – logo + título + menu tipo “pill” */
+/* ==========================
+   HEADER
+========================== */
 
 .topo-site {
-    background-color: var(--cor-primaria);
-    color: #ffffff;
-    margin: 0;
-    border-radius: 0;
+    background: var(--verde-principal);
+    width: 100%;
+    box-shadow: var(--sombra);
 }
 
 .barra-superior {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0.75rem 1.5rem 1.25rem;
+    max-width: 1400px;
+    margin: auto;
+    padding: 18px 40px;
+
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    align-items: center;
+    gap: 30px;
 }
+
+/* LOGO */
 
 .logo-area {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
 }
 
-.logo-area img {
-    max-height: 80px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+.logo-banner {
+    width: 320px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 18px;
 }
 
-.titulo-site h1 {
-    font-family: var(--fonte-titulos);
-    font-size: 2.2rem;
-    margin: 0;
-}
-
-.titulo-site p {
-    margin: 0.25rem 0 0;
-    font-size: 0.95rem;
-    opacity: 0.9;
-}
-
-/* menu principal */
+/* MENU */
 
 .menu-principal {
     display: flex;
-    gap: 1rem;
     align-items: center;
+    gap: 20px;
 }
 
 .menu-principal a {
-    color: #ffffff;
+    color: white;
     text-decoration: none;
+    font-size: 17px;
     font-weight: 600;
-    padding: 0.5rem 1.2rem;
+    padding: 12px 22px;
     border-radius: 999px;
-    position: relative;
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
-    font-size: 0.95rem;
+    transition: .3s ease;
 }
 
-.menu-principal a:hover,
-.menu-principal a:focus {
-    background-color: rgba(0,0,0,0.18);
-    transform: translateY(-1px);
+.menu-principal a:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-2px);
 }
-
-/* link ativo com pill cheia e sublinhado */
 
 .menu-principal a.ativo {
-    background-color: rgba(0,0,0,0.22);
+    background: rgba(255,255,255,0.15);
+    position: relative;
 }
 
 .menu-principal a.ativo::after {
     content: "";
     position: absolute;
+    bottom: 8px;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 0.25rem;
+
     width: 28px;
     height: 3px;
+
     border-radius: 999px;
-    background-color: #ffffff;
+    background: white;
 }
 
-/* layout principal */
+/* ==========================
+   MAIN
+========================== */
 
 main {
-    max-width: 1100px;
-    margin: 1.5rem auto 0;
-    padding: 0 1rem 2rem;
+    max-width: 1300px;
+    margin: auto;
+    padding: 30px;
 }
 
-/* hero vídeo (home) */
+/* ==========================
+   VIDEO TOPO
+========================== */
 
-.hero-video {
-    display: grid;
-    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-    gap: 1.5rem;
-    align-items: center;
-    background-color: #ffffff;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    margin-bottom: 2rem;
+.top-video {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    margin-bottom: 40px;
 }
 
-.hero-video video {
+.video-topo {
     width: 100%;
-    border-radius: 6px;
-    background-color: #111;
+    height: 420px;
+    display: block;
+    object-fit: cover;
+    background: black;
 }
 
-.hero-video h2 {
-    font-family: var(--fonte-titulos);
-    margin-top: 0;
-    margin-bottom: 0.5rem;
+/* ==========================
+   APRESENTAÇÃO
+========================== */
+
+.apresentacao {
+    background: white;
+    border-radius: var(--radius);
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: var(--sombra);
 }
 
-.hero-video p {
-    margin-top: 0;
+.intro-texto h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--verde-principal);
 }
 
-/* botões */
+.intro-texto p {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+}
 
-.botao,
-button {
+/* BOTÃO */
+
+.botao {
     display: inline-block;
-    background-color: var(--cor-secundaria);
-    color: #ffffff;
-    padding: 0.6rem 1.2rem;
-    border-radius: 4px;
-    border: none;
+    background: var(--amarelo);
+    color: white;
     text-decoration: none;
-    cursor: pointer;
-    font-weight: 600;
+
+    padding: 14px 24px;
+    border-radius: 12px;
+
+    font-weight: bold;
+    transition: .3s ease;
 }
 
-.botao:hover,
-.botao:focus,
-button:hover,
-button:focus {
-    background-color: #e67e22;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-    transition: all 0.2s ease-in-out;
+.botao:hover {
+    transform: translateY(-2px);
+    background: #E67E22;
 }
 
-/* cards de serviços (home/serviços) */
+/* ==========================
+   SERVIÇOS
+========================== */
 
 .servicos-destaque {
-    margin-bottom: 2rem;
+    margin-bottom: 50px;
 }
 
 .servicos-destaque h2 {
-    font-family: var(--fonte-titulos);
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    color: var(--verde-principal);
 }
 
 .cards-servicos {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
 }
 
 .card {
-    background-color: var(--cor-card);
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    background: white;
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: var(--sombra);
+    transition: .3s ease;
 }
 
-/* figure */
+.card:hover {
+    transform: translateY(-6px);
+}
+
+.card h3 {
+    color: var(--verde-principal);
+    margin-bottom: 15px;
+}
+
+/* ==========================
+   OFICINA
+========================== */
+
+.figure-sec {
+    margin-bottom: 40px;
+}
 
 .figure-sec h2 {
-    font-family: var(--fonte-titulos);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--verde-principal);
 }
 
 .figure-sec figure {
-    margin: 0;
-    background-color: #ffffff;
-    border-radius: 8px;
-    padding: 0.5rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--sombra);
 }
 
 .figure-sec img {
-    max-width: 100%;
-    border-radius: 6px;
+    width: 100%;
+    display: block;
 }
 
 .figure-sec figcaption {
-    font-size: 0.9rem;
-    margin-top: 0.4rem;
+    padding: 20px;
+    font-size: .95rem;
+    color: #555;
 }
 
-/* tabelas (serviços / horário) */
+/* ==========================
+   PRODUTOS
+========================== */
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    background-color: #ffffff;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-caption {
-    font-weight: 600;
-    text-align: left;
-    padding: 0.5rem 0.75rem;
-}
-
-th,
-td {
-    border: 1px solid var(--cor-borda-suave);
-    padding: 0.6rem 0.75rem;
-    text-align: left;
-    font-size: 0.95rem;
-}
-
-thead {
-    background-color: #f0f0f0;
-}
-
-/* grelha produtos (LOJA) */
-
-.grelha-produtos {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-.produto {
-    background-color: #ffffff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
-.produto img {
-    max-width: 100%;
-    border-radius: 6px;
-    display: block;
-}
-
-.produto h3 {
-    margin: 0.3rem 0 0.1rem;
-    font-family: var(--fonte-titulos);
-    font-size: 1.1rem;
-}
-
-.produto-subtitulo {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #666666;
-}
-
-/* CATÁLOGO (página Compras) */
-
-.catalogo {
-    margin-top: 2rem;
-    background-color: #ffffff;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
-.catalogo h2 {
-    font-family: var(--fonte-titulos);
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-}
-
-.catalogo > p {
-    margin-top: 0;
-    margin-bottom: 1rem;
-}
-
+.grelha-produtos,
 .catalogo-grelha {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
 }
 
+.produto,
 .item-catalogo {
-    background-color: var(--cor-card);
-    border-radius: 8px;
-    padding: 1rem;
-    border: 1px solid var(--cor-borda-suave);
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+    transition: .3s ease;
 }
 
+.produto:hover,
+.item-catalogo:hover {
+    transform: translateY(-5px);
+}
+
+.produto img,
 .item-foto {
     width: 100%;
-    border-radius: 6px;
-    margin-bottom: 0.5rem;
-    display: block;
+    height: 240px;
+    object-fit: cover;
 }
 
+.produto h3,
 .item-catalogo h3 {
-    margin: 0;
-    font-family: var(--fonte-titulos);
-    font-size: 1.1rem;
+    padding: 20px 20px 10px;
+    color: var(--verde-principal);
 }
 
-.item-subtitulo {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #666666;
+.produto p,
+.item-catalogo p {
+    padding: 0 20px 20px;
 }
 
-.item-caracteristicas {
-    margin: 0.3rem 0 0.8rem;
-    padding-left: 1.1rem;
-    font-size: 0.9rem;
-}
+/* ==========================
+   FORMULÁRIO
+========================== */
 
-.item-caracteristicas li {
-    margin-bottom: 0.15rem;
-}
-
-.catalogo-nota {
-    margin-top: 1rem;
-    font-size: 0.85rem;
-    color: #555555;
-}
-
-/* formulário (contactos) */
-
-.form-servico fieldset {
-    border: 1px solid var(--cor-borda-suave);
-    border-radius: 8px;
-    padding: 1rem;
-    background-color: #ffffff;
-}
-
-.form-servico legend {
-    font-weight: 600;
+.form-servico {
+    background: white;
+    border-radius: var(--radius);
+    padding: 30px;
+    box-shadow: var(--sombra);
 }
 
 .form-servico label {
     display: block;
-    margin-top: 0.6rem;
-    font-size: 0.9rem;
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-weight: 600;
 }
 
 .form-servico input,
 .form-servico select,
 .form-servico textarea {
     width: 100%;
-    padding: 0.45rem;
-    margin-top: 0.2rem;
-    border-radius: 4px;
-    border: 1px solid #bdbdbd;
-    font: inherit;
+    padding: 14px;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    font-size: 16px;
 }
 
-/* estados de foco acessíveis */
-
-a:focus,
-button:focus,
-input:focus,
-select:focus,
-textarea:focus {
-    outline: 3px solid var(--cor-secundaria);
-    outline-offset: 2px;
+.form-servico textarea {
+    resize: vertical;
+    min-height: 140px;
 }
 
-/* promo (aside) */
+/* ==========================
+   FOOTER
+========================== */
 
-.promo {
-    background-color: #d5f5e3;
-    border-left: 4px solid var(--cor-primaria);
-    padding: 1rem;
-    margin-top: 2rem;
-    border-radius: 4px;
-}
-
-/* vídeo e mapa na página de contactos */
-
-.top-video {
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-    background-color: #ffffff;
-    padding: 0;                 /* sem espaço à volta do vídeo */
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    overflow: hidden;           /* corta o que sair fora do retângulo */
-}
-
-.video-topo {
-    width: 100%;
-    height: 260px;              /* ajusta a altura conforme quiseres */
-    display: block;
-    object-fit: cover;          /* vídeo preenche e é recortado */
-    background-color: #111;
-}
-
-.mapa iframe {
-    max-width: 100%;
-    border: none;
-    border-radius: 8px;
-}
-
-/* secção Como chegar */
-
-.como-chegar {
-    margin-top: 2rem;
-    background-color: #ffffff;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
-.como-chegar h3 {
-    font-family: var(--fonte-titulos);
-    margin-top: 0;
-    margin-bottom: 0.75rem;
-}
-
-/* rodapé */
-
-footer {
-    background-color: #0f4225;
-    color: #ffffff;
-    padding: 1rem;
+.footer-site {
+    background: var(--verde-escuro);
+    color: white;
     text-align: center;
-    margin-top: 2rem;
-    font-size: 0.9rem;
+    padding: 25px;
+    margin-top: 50px;
 }
 
-/* responsivo */
+/* ==========================
+   RESPONSIVO
+========================== */
 
-@media (max-width: 900px) {
-    .cards-servicos {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+@media (max-width: 1000px) {
 
-    .grelha-produtos,
-    .catalogo-grelha {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 800px) {
     .barra-superior {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
+        text-align: center;
     }
 
     .menu-principal {
         flex-wrap: wrap;
-        justify-content: flex-start;
+        justify-content: center;
+    }
+
+    .cards-servicos,
+    .grelha-produtos,
+    .catalogo-grelha {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 700px) {
-    .hero-video {
-        grid-template-columns: 1fr;
+@media (max-width: 768px) {
+
+    main {
+        padding: 20px;
+    }
+
+    .video-topo {
+        height: 250px;
     }
 
     .cards-servicos,
@@ -507,46 +392,17 @@ footer {
     .catalogo-grelha {
         grid-template-columns: 1fr;
     }
-}
 
-/* acessibilidade: menos movimento */
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        scroll-behavior: auto !important;
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
+    .logo-banner {
+        width: 260px;
     }
-}
 
-/* animação suave no botão de CTA */
+    .menu-principal {
+        gap: 10px;
+    }
 
-@keyframes pulse-botao {
-    0%   { transform: scale(1); }
-    50%  { transform: scale(1.02); }
-    100% { transform: scale(1); }
-}
-
-.cta .botao {
-    animation: pulse-botao 2.5s ease-in-out infinite;
-}
-/* vídeo e mapa na página de contactos */
-
-.top-video {
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-    background-color: #ffffff;
-    padding: 0;                 /* o vídeo encosta às bordas internas */
-    border-radius: 14px;        /* mesmo raio que vês no retângulo */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    overflow: hidden;           /* corta o que sair fora do retângulo */
-}
-
-.video-topo {
-    width: 100%;
-    height: 260px;              /* altura do retângulo – ajusta se quiseres */
-    display: block;
-    object-fit: cover;          /* vídeo preenche o retângulo */
-    background-color: #000;     /* preto enquanto não carrega */
+    .menu-principal a {
+        padding: 10px 16px;
+        font-size: 15px;
+    }
 }
