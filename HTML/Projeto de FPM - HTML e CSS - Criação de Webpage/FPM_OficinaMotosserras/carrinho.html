@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido de Encomenda - Oficina Joaquim Luís Simões</title>
+    <meta name="description" content="Faça a sua encomenda de equipamentos de jardim.">
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topo-site">
+    <div class="barra-superior">
+        <div class="logo-area">
+            <img src="img/logo/logo.jpg" alt="Logotipo Joaquim Luís Simões">
+            <div class="titulo-site">
+                <h1>Joaquim Luís Simões</h1>
+                <p>Motos · Bicicletas · Jardinagem</p>
+            </div>
+        </div>
+
+        <nav class="menu-principal">
+    <a href="index.html">Início</a>
+    <a href="loja.html">Produtos</a>
+    <a href="servicos.html">Serviços</a>
+    <a href="compras.html">Compras</a>
+    <a href="carrinho.html" class="ativo">Carrinho</a>
+    <a href="contactos.html">Contactos</a>
+    </nav>
+    </div>
+</header>
+
+<main>
+    <section class="contactos">
+        <h2>Formulário de Encomenda</h2>
+        <p>Como o nosso site está em atualização, por favor selecione abaixo os artigos que deseja adquirir e preencha os seus dados. Entraremos em contacto com o valor final e opções de entrega.</p>
+        
+        <form action="mailto:geral@joaquimluissimoes.pt" method="post" enctype="text/plain" class="form-servico">
+            
+            <fieldset>
+                <legend>1. Selecione os Produtos</legend>
+                
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" id="prod1" name="Produto_Motosserra" value="Sim">
+                    <label for="prod1" style="display:inline;">Motosserra Floresta 45 (349,00 €)</label>
+                </div>
+                
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" id="prod2" name="Produto_CortaRelva" value="Sim">
+                    <label for="prod2" style="display:inline;">Corta-relva Jardim 500 (229,00 €)</label>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" id="prod3" name="Produto_Rocadora" value="Sim">
+                    <label for="prod3" style="display:inline;">Roçadora Campo Pro (189,00 €)</label>
+                </div>
+
+                <div style="margin-bottom: 10px;">
+                    <input type="checkbox" id="prod4" name="Produto_Trator" value="Sim">
+                    <label for="prod4" style="display:inline;">Trator Corta-Relva Quinta 1000 (1.850,00 €)</label>
+                </div>
+            </fieldset>
+
+            <fieldset style="margin-top: 20px;">
+                <legend>2. Dados de Faturação e Envio</legend>
+
+                <label for="nome">Nome completo</label>
+                <input type="text" id="nome" name="Nome" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="Email" required>
+
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="Telefone" pattern="[0-9]{9}" placeholder="9 dígitos" required>
+
+                <label for="morada">Morada completa para envio (Opcional caso levante em loja)</label>
+                <textarea id="morada" name="Morada" rows="3"></textarea>
+
+                <label for="notas">Notas adicionais ou dúvidas</label>
+                <textarea id="notas" name="Notas" rows="2"></textarea>
+
+                <button type="submit">Enviar Pedido de Encomenda</button>
+            </fieldset>
+        </form>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2026 Joaquim Luís Simões - Oficina e Loja de Motoserras &amp; Máquinas de Relva</p>
+</footer>
+</body>
+</html>

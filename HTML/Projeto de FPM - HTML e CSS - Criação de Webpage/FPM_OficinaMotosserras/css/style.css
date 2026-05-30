@@ -1,0 +1,641 @@
+﻿:root {
+    --cor-primaria: #145A32;
+    --cor-secundaria: #F39C12;
+    --cor-fundo: #F5F5F5;
+    --cor-texto: #222222;
+    --cor-card: #ffffff;
+    --cor-borda-suave: #e0e0e0;
+    --fonte-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    --fonte-titulos: "Oswald", "Roboto Condensed", "Segoe UI", sans-serif;
+}
+
+/* reset simples */
+
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #145A32; /* garante que não há faixa branca no topo */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--fonte-base);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* TOPO – logo + título + menu tipo “pill” */
+
+.topo-site {
+    background-color: var(--cor-primaria);
+    color: #ffffff;
+    margin: 0;
+    border-radius: 0;
+}
+
+.barra-superior {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.logo-area img {
+    max-height: 80px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
+
+.titulo-site h1 {
+    font-family: var(--fonte-titulos);
+    font-size: 2.2rem;
+    margin: 0;
+}
+
+.titulo-site p {
+    margin: 0.25rem 0 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* menu principal */
+
+.menu-principal {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.menu-principal a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    border-radius: 999px;
+    position: relative;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    font-size: 0.95rem;
+}
+
+.menu-principal a:hover,
+.menu-principal a:focus {
+    background-color: rgba(0,0,0,0.18);
+    transform: translateY(-1px);
+}
+
+/* link ativo com pill cheia e sublinhado */
+
+.menu-principal a.ativo {
+    background-color: rgba(0,0,0,0.22);
+}
+
+.menu-principal a.ativo::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0.25rem;
+    width: 28px;
+    height: 3px;
+    border-radius: 999px;
+    background-color: #ffffff;
+}
+
+/* layout principal */
+
+main {
+    max-width: 1100px;
+    margin: 1.5rem auto 0;
+    padding: 0 1rem 2rem;
+}
+
+/* hero vídeo (home) */
+
+.hero-video {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 2rem;
+}
+
+.hero-video video {
+    width: 500px;
+    border-radius: 6px;
+    background-color: #111;
+}
+
+.hero-video h2 {
+    font-family: var(--fonte-titulos);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.hero-video p {
+    margin-top: 0;
+}
+
+/* botões */
+
+.botao,
+button {
+    display: inline-block;
+    background-color: var(--cor-secundaria);
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.botao:hover,
+.botao:focus,
+button:hover,
+button:focus {
+    background-color: #e67e22;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+    transition: all 0.2s ease-in-out;
+}
+
+/* cards de serviços (home/serviços) */
+
+.servicos-destaque {
+    margin-bottom: 2rem;
+}
+
+.servicos-destaque h2 {
+    font-family: var(--fonte-titulos);
+    margin-bottom: 1rem;
+}
+
+.cards-servicos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    background-color: var(--cor-card);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+/* figure */
+
+.figure-sec h2 {
+    font-family: var(--fonte-titulos);
+}
+
+.figure-sec figure {
+    margin: 0;
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.figure-sec img {
+    max-width: 100%;
+    border-radius: 6px;
+}
+
+.figure-sec figcaption {
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+}
+
+/* tabelas (serviços / horário) */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+caption {
+    font-weight: 600;
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+}
+
+th,
+td {
+    border: 1px solid var(--cor-borda-suave);
+    padding: 0.6rem 0.75rem;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+thead {
+    background-color: #f0f0f0;
+}
+
+/* grelha produtos (LOJA) */
+
+.grelha-produtos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.produto {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.produto img {
+    max-width: 100%;
+    border-radius: 6px;
+    display: block;
+}
+
+.produto h3 {
+    margin: 0.3rem 0 0.1rem;
+    font-family: var(--fonte-titulos);
+    font-size: 1.1rem;
+}
+
+.produto-subtitulo {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+/* CATÁLOGO (página Compras) */
+
+.catalogo {
+    margin-top: 2rem;
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.catalogo h2 {
+    font-family: var(--fonte-titulos);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.catalogo > p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.catalogo-grelha {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.item-catalogo {
+    background-color: var(--cor-card);
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid var(--cor-borda-suave);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.item-foto {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.item-catalogo h3 {
+    margin: 0;
+    font-family: var(--fonte-titulos);
+    font-size: 1.1rem;
+}
+
+.item-subtitulo {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666666;
+}
+
+.item-caracteristicas {
+    margin: 0.3rem 0 0.8rem;
+    padding-left: 1.1rem;
+    font-size: 0.9rem;
+}
+
+.item-caracteristicas li {
+    margin-bottom: 0.15rem;
+}
+
+.catalogo-nota {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #555555;
+}
+
+/* formulário (contactos) */
+
+.form-servico fieldset {
+    border: 1px solid var(--cor-borda-suave);
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #ffffff;
+}
+
+.form-servico legend {
+    font-weight: 600;
+}
+
+.form-servico label {
+    display: block;
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+}
+
+.form-servico input,
+.form-servico select,
+.form-servico textarea {
+    width: 100%;
+    padding: 0.45rem;
+    margin-top: 0.2rem;
+    border-radius: 4px;
+    border: 1px solid #bdbdbd;
+    font: inherit;
+}
+
+/* estados de foco acessíveis */
+
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid var(--cor-secundaria);
+    outline-offset: 2px;
+}
+
+/* promo (aside) */
+
+.promo {
+    background-color: #d5f5e3;
+    border-left: 4px solid var(--cor-primaria);
+    padding: 1rem;
+    margin-top: 2rem;
+    border-radius: 4px;
+}
+
+/* vídeo e mapa na página de contactos */
+
+.top-video {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    background-color: #ffffff;
+    padding: 0;                 /* sem espaço à volta do vídeo */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;           /* corta o que sair fora do retângulo */
+}
+
+.video-topo {
+    width: 100%;
+    height: 260px;              /* ajusta a altura conforme quiseres */
+    display: block;
+    object-fit: cover;          /* vídeo preenche e é recortado */
+    background-color: #111;
+}
+
+.mapa iframe {
+    max-width: 100%;
+    border: none;
+    border-radius: 8px;
+}
+
+/* secção Como chegar */
+
+.como-chegar {
+    margin-top: 2rem;
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.como-chegar h3 {
+    font-family: var(--fonte-titulos);
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+}
+
+/* rodapé */
+
+footer {
+    background-color: #0f4225;
+    color: #ffffff;
+    padding: 1rem;
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+/* responsivo */
+
+@media (max-width: 900px) {
+    .cards-servicos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grelha-produtos,
+    .catalogo-grelha {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 800px) {
+    .barra-superior {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .menu-principal {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 700px) {
+    .hero-video {
+        grid-template-columns: 1fr;
+    }
+
+    .cards-servicos,
+    .grelha-produtos,
+    .catalogo-grelha {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* acessibilidade: menos movimento */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        scroll-behavior: auto !important;
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+/* animação suave no botão de CTA */
+
+@keyframes pulse-botao {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+.cta .botao {
+    animation: pulse-botao 2.5s ease-in-out infinite;
+}
+/* vídeo e mapa na página de contactos */
+
+.top-video {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    background-color: #ffffff;
+    padding: 0;                 /* o vídeo encosta às bordas internas */
+    border-radius: 14px;        /* mesmo raio que vês no retângulo */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;           /* corta o que sair fora do retângulo */
+}
+
+.video-topo {
+    width: 100%;
+    height: 260px;              /* altura do retângulo – ajusta se quiseres */
+    display: block;
+    object-fit: cover;          /* vídeo preenche o retângulo */
+    background-color: #000;     /* preto enquanto não carrega */
+}
+
+    
+.produtos-relacionados {
+    display: none;
+    margin-top: 30px;
+}
+
+.produtos-relacionados:target {
+    display: block;
+}
+
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.produto-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 6px;
+    background: #fff;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.produto-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    background-color: #eee;
+}
+        
+.produto-item h4 {
+    margin: 12px 0 6px 0;
+    color: #333;
+    font-size: 1.05em;
+}
+
+.produto-item p {
+    font-size: 0.88em;
+    color: #666;
+    margin-bottom: 12px;
+    line-height: 1.3;
+}
+
+.produto-item .preco {
+    display: block;
+    font-weight: bold;
+    color: #2e7d32;
+    font-size: 1.15em;
+    margin-bottom: 10px;
+}
+
+.produto-item .btn-comprar {
+    display: inline-block;
+    background-color: #2e7d32;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.85em;
+}
+
+.mensagem-selecao {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff9e6;
+    border-left: 5px solid #ffb300;
+    border-radius: 4px;
+}
+
+/* Esconde a mensagem padrão caso o utilizador tenha chegado de um clique de produto */
+#motoserras:target ~ .mensagem-selecao,
+#cortarelvas:target ~ .mensagem-selecao,
+#rocadoras:target ~ .mensagem-selecao {
+    display: none;
+}
+
+/* Alinhamento flexível para estruturar a ordem na página */
+.main-flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.seccao-base { order: 1; }
+.produtos-relacionados { order: 2; }
+.mensagem-selecao { order: 3; }

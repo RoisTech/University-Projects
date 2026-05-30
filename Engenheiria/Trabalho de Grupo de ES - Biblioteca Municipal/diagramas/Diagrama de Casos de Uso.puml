@@ -1,0 +1,36 @@
+@startuml "Diagrama de Casos de Uso"
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Leitor" as leitor
+actor "Bibliotecário" as biblio
+actor "Sistema de Notificações" as sysNotif <<Sistema Externo>>
+
+rectangle "Sistema de Gestão de Biblioteca" {
+  usecase "Autenticar no Sistema" as UC_Autenticar
+  usecase "Pesquisar Catálogo" as UC_Pesquisar
+  usecase "Reservar Título" as UC_Reservar
+  usecase "Registar Empréstimo" as UC_Emprestar
+  usecase "Devolver Exemplar" as UC_Devolver
+  usecase "Calcular Multa" as UC_Multa
+  usecase "Renovar Empréstimo" as UC_Renovar
+  usecase "Notificar Utilizador" as UC_Notificar
+}
+
+leitor --> UC_Pesquisar
+leitor --> UC_Reservar
+leitor --> UC_Renovar
+
+biblio --> UC_Emprestar
+biblio --> UC_Devolver
+biblio --> UC_Pesquisar
+
+sysNotif --> UC_Notificar
+
+UC_Reservar ..> UC_Autenticar : <<include>>
+UC_Renovar ..> UC_Autenticar : <<include>>
+UC_Emprestar ..> UC_Autenticar : <<include>>
+
+UC_Devolver <.. UC_Multa : <<extend>>
+UC_Reservar ..> UC_Notificar : <<include>>
+@enduml

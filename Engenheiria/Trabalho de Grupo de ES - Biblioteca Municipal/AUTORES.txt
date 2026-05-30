@@ -1,0 +1,8 @@
+Alunos: 
+	- Ricardo Reis. Número de aluno: a22507879
+	- Sérgio Simões. Número de aluno: a22508441
+
+
+Ricardo: Idealização da Aplicação, Engenharia de Requisitos e parte da Modelação do Sistema.
+Sérgio: Modelação do Sistema e Desenho do Software.
+O restante do projeto foi elaborado conjuntamente entre os 2.

@@ -1,0 +1,89 @@
+@startuml DiagramaDeClasses
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+class Polo {
+  - nome: String
+  - morada: String
+  + consultarStock(t: Titulo): int
+}
+
+class Titulo {
+  - isbn: String
+  - nomeLivro: String
+  - autor: String
+  + verificarDisponibilidade(): boolean
+  + adicionarReserva(l: Leitor): Reserva
+}
+
+class Exemplar {
+  - codigoBarras: String
+  - estante: String
+  - disponivel: boolean
+  + alterarEstado(estado: boolean): void
+}
+
+abstract class Leitor {
+  - numCartao: int
+  - nome: String
+  # email: String
+  + temMultasAtivas(): boolean
+}
+
+class LeitorAdulto {
+  - limiteEmprestimos: int = 5
+}
+
+class LeitorJovem {
+  - encarregadoEducacao: String
+}
+
+class Emprestimo {
+  - dataInicio: Date
+  - dataFim: Date
+  - devolvido: boolean
+  + renovarPrazo(): void
+  + finalizarEmprestimo(): void
+  + verificarAtraso(): boolean
+}
+
+class Multa {
+  - valorDiario: double
+  - diasAtraso: int
+  - paga: boolean
+  + calcularTotal(): double
+  + liquidarMulta(): void
+}
+
+class Reserva {
+  - dataReserva: Date
+  - statusAtiva: boolean
+  + Reserva(l: Leitor, t: Titulo)
+  + cancelarReserva(): void
+}
+
+interface ISistemaNotificacoes <<interface>> {
+  + enviarConfirmacao(email: String): boolean
+}
+
+' Herança
+Leitor <|-- LeitorAdulto
+Leitor <|-- LeitorJovem
+
+' Associações Estruturais (Composição e Agregação)
+Polo "1" o-- "0..*" Exemplar : aloja >
+Titulo "1" *-- "1..*" Exemplar : contem >
+Emprestimo "1" *-- "0..1" Multa : gera >
+
+' Associações de Negócio
+Leitor "1" -- "0..*" Emprestimo : realiza >
+Emprestimo "0..*" -- "1" Exemplar : envolve >
+
+Leitor "1" -- "0..*" Reserva : faz >
+Reserva "0..*" -- "1" Titulo : refere a >
+
+' Dependência
+Titulo ..> ISistemaNotificacoes : usa >
+
+@enduml

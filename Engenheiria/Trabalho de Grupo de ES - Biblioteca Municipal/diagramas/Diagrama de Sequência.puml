@@ -1,0 +1,34 @@
+@startuml DiagramaSequencia
+skinparam monochrome true
+skinparam shadowing false
+skinparam defaultFontName Arial
+autonumber
+
+actor "Matilde : Leitor" as leitor
+participant "t : Titulo" as titulo
+participant "r : Reserva" as reserva
+participant "sys : SistemaNotificacoes" as email
+
+activate leitor
+leitor -> titulo ++ : adicionarReserva(leitor)
+
+titulo -> titulo ++ : verificarDisponibilidade()
+deactivate titulo
+|||
+
+alt Exemplares indisponíveis (Sucesso)
+    titulo -> reserva ** : <<create>> \nnew Reserva(leitor, t)
+    |||
+    
+    titulo -> email ++ : enviarConfirmacao(leitor.email)
+    email --> titulo -- : confirmacaoEnviada
+    
+    titulo --> leitor : "Reserva efetuada com sucesso"
+    
+else Exemplares disponíveis (Falha)
+    titulo --> leitor : "Erro: Título disponível nas estantes"
+end
+
+deactivate titulo
+deactivate leitor
+@enduml

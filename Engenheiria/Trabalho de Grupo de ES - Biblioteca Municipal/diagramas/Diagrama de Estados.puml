@@ -1,0 +1,29 @@
+@startuml DiagramaDeEstados
+[*] --> Ativo : registar_emprestimo
+
+state Ativo {
+}
+note right of Ativo : Livro na posse do leitor
+
+Ativo --> Ativo : renovar_prazo
+Ativo --> Concluido : devolver_exemplar [antes do prazo]
+Ativo --> EmAtraso : prazo_expirado
+
+state EmAtraso {
+}
+
+EmAtraso --> AguardandoPagamento : devolver_exemplar [multa gerada]
+
+state AguardandoPagamento {
+}
+
+AguardandoPagamento --> ConcluidoComMulta : pagar_multa
+
+state Concluido {
+}
+state ConcluidoComMulta {
+}
+
+Concluido --> [*]
+ConcluidoComMulta --> [*]
+@enduml
