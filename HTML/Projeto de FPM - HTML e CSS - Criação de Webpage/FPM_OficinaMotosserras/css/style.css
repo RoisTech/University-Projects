@@ -107,8 +107,6 @@ body {
     display: flex;
     gap: 0.35rem;          /* espaço entre os links (mais juntos) */
     align-items: center;
-    /* Se o nav for filho direto de .barra-superior e não houver .nav-area,
-       podes usar margin-left:auto aqui para empurrar o menu para a direita. */
 }
 
 /* Links do menu: pill com hover */
@@ -279,7 +277,7 @@ button:focus {
 }
 
 /* ===========================
-   TABELAS (SERVIÇOS / HORÁRIO)
+   TABELAS
    =========================== */
 
 table {
@@ -546,6 +544,17 @@ footer {
    CARDS COMPACTOS – GAMA RELACIONADA
    =========================== */
 
+/* Secções de produtos relacionados controladas por âncoras (#motoserras, #cortarelvas...) */
+.produtos-relacionados {
+    display: none;
+    margin-top: 30px;
+}
+
+/* Mostra a secção quando é alvo de âncora (ex.: compras.html#motoserras) */
+.produtos-relacionados:target {
+    display: block;
+}
+
 /* Grelha flexível de cards relacionados (motosserras, corta-relvas, roçadoras) */
 .grelha-relacionados {
     display: grid;
@@ -570,7 +579,8 @@ footer {
 /* Imagem do produto (mais pequena) */
 .card-relacionado img {
     max-width: 120px;
-    height: auto;
+    max-height: 80px;
+    object-fit: contain;   /* mantém o produto dentro da mesma “caixa” */
     margin-bottom: 8px;
 }
 
@@ -595,8 +605,7 @@ footer {
     margin-bottom: 8px;
 }
 
-/* Espaçador flex: empurra o botão para o fundo do card,
-   para todos os botões ficarem alinhados na mesma linha */
+/* Espaçador flex: empurra o botão para o fundo do card */
 .card-relacionado .spacer {
     flex-grow: 1;
 }
@@ -614,13 +623,11 @@ footer {
     text-decoration: none;
 }
 
-/* Ícone de carrinho simples (podes remover o content se não quiseres emoji) */
 .card-relacionado .btn-detalhes::before {
     content: "🛒";
     font-size: 0.9rem;
 }
 
-/* Hover do botão de detalhes */
 .card-relacionado .btn-detalhes:hover,
 .card-relacionado .btn-detalhes:focus {
     background-color: #256227;
@@ -744,7 +751,6 @@ footer {
    ANIMAÇÃO CTA
    =========================== */
 
-/* Animação suave no botão de chamada para ação */
 @keyframes pulse-botao {
     0%   { transform: scale(1); }
     50%  { transform: scale(1.02); }
@@ -756,77 +762,19 @@ footer {
 }
 
 /* ===========================
-   PRODUTOS RELACIONADOS (ESTRUTURA ANTIGA)
+   LAYOUT FLEX PÁGINA COMPRAS
    =========================== */
 
-/* Secções de produtos relacionados controladas por âncoras (#motoserras, #cortarelvas...) */
-.produtos-relacionados {
-    display: none;
-    margin-top: 30px;
+/* Layout flex da página de compras (texto + produtos + mensagem) */
+.main-flex {
+    display: flex;
+    flex-direction: column;
 }
 
-/* Mostra a secção quando é alvo de âncora (ex.: compras.html#motoserras) */
-.produtos-relacionados:target {
-    display: block;
-}
+.seccao-base { order: 1; }          /* texto informativo */
+.produtos-relacionados { order: 2; }/* gamas relacionadas */
+.mensagem-selecao { order: 3; }     /* mensagem de nota */
 
-/* Grelha antiga (ainda usada em combinações ou transição) */
-.grid-produtos {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-/* Card antigo de produto (ainda útil se reaproveitares noutras secções) */
-.produto-item {
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 6px;
-    background: #fff;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.produto-item img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    background-color: #eee;
-}
-
-.produto-item h4 {
-    margin: 12px 0 6px 0;
-    color: #333;
-    font-size: 1.05em;
-}
-
-.produto-item p {
-    font-size: 0.88em;
-    color: #666;
-    margin-bottom: 12px;
-    line-height: 1.3;
-}
-
-.produto-item .preco {
-    display: block;
-    font-weight: bold;
-    color: #2e7d32;
-    font-size: 1.15em;
-    margin-bottom: 10px;
-}
-
-.produto-item .btn-comprar {
-    display: inline-block;
-    background-color: #2e7d32;
-    color: white;
-    padding: 6px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.85em;
-}
-
-/* Mensagem de ajuda/navegação na página de compras */
 .mensagem-selecao {
     margin-top: 30px;
     padding: 20px;
@@ -841,13 +789,3 @@ footer {
 #rocadoras:target ~ .mensagem-selecao {
     display: none;
 }
-
-/* Layout flex da página de compras (texto + produtos + mensagem) */
-.main-flex {
-    display: flex;
-    flex-direction: column;
-}
-
-.seccao-base { order: 1; }          /* texto informativo */
-.produtos-relacionados { order: 2; }/* gamas relacionadas */
-.mensagem-selecao { order: 3; }     /* mensagem de nota */
