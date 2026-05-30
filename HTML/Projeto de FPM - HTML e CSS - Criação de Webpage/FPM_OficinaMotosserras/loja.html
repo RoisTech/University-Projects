@@ -7,6 +7,59 @@
     <meta name="description" content="Loja de moto-serras, máquinas de relva e equipamentos de jardim.">
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* --- ESTILO EXTRA APENAS PARA OS MODAIS (CAIXAS DE DETALHES) --- */
+
+        .modal-produto {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0,0,0,0.55);
+            display: none;                 /* escondido por padrão */
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        /* quando o id é alvo de um link (#detalhes-xxx), mostra */
+        .modal-produto:target {
+            display: flex;
+        }
+
+        .modal-caixa {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            max-width: 420px;
+            width: 90%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            position: relative;
+        }
+
+        .modal-fechar {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.7rem;
+            text-decoration: none;
+            font-size: 1.6rem;
+            color: #333333;
+        }
+
+        .modal-caixa h2 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-caixa ul {
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            padding-left: 1.2rem;
+        }
+
+        .modal-caixa ul li {
+            margin-bottom: 0.2rem;
+        }
+    </style>
 </head>
 <body>
 <header class="topo-site">
@@ -36,25 +89,35 @@
         <p>Selecionamos modelos com boa relação qualidade/preço e assistência técnica garantida.</p>
 
         <div class="produtos-content" style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px;">
+            <!-- PRODUTO 1 -->
             <article class="produto" style="flex: 1; min-width: 250px;">
-                <img src="img/produtos/motoserras/motoserra.jpg" alt="Motoserra Floresta 45" loading="lazy" width="500" height="250">
+                <img src="img/produtos/motoserras/motoserra.jpg"
+                     alt="Motoserra Floresta 45"
+                     loading="lazy" width="500" height="250">
                 <h3>Motoserra Floresta 45</h3>
                 <p class="produto-subtitulo">Alta performance para corte de lenha e poda.</p>
-                <a class="botao" href="compras.html#motoserras">Fazer Encomenda</a>
+                <!-- abre modal de características -->
+                <a class="botao" href="#detalhes-motoserra45">Fazer Encomenda</a>
             </article>
 
+            <!-- PRODUTO 2 -->
             <article class="produto" style="flex: 1; min-width: 250px;">
-                <img src="img/produtos/corta_relvas/corta_relva.jpg" alt="Corta-relva Jardim 500" loading="lazy" width="500" height="250">
+                <img src="img/produtos/corta_relvas/corta_relva.jpg"
+                     alt="Corta-relva Jardim 500"
+                     loading="lazy" width="500" height="250">
                 <h3>Corta-relva Jardim 500</h3>
                 <p class="produto-subtitulo">Ideal para jardins de médio e grande porte.</p>
-                <a class="botao" href="compras.html#cortarelvas">Fazer Encomenda</a>
+                <a class="botao" href="#detalhes-cortarelva500">Fazer Encomenda</a>
             </article>
 
+            <!-- PRODUTO 3 -->
             <article class="produto" style="flex: 1; min-width: 250px;">
-                <img src="img/produtos/roçadoras/roçadora.jpg" alt="Roçadora Campo Pro" loading="lazy" width="500" height="250">
+                <img src="img/produtos/roçadoras/roçadora.jpg"
+                     alt="Roçadora Campo Pro"
+                     loading="lazy" width="500" height="250">
                 <h3>Roçadora Campo Pro</h3>
                 <p class="produto-subtitulo">Limpeza eficaz de terrenos e ervas altas.</p>
-                <a class="botao" href="compras.html#rocadoras">Fazer Encomenda</a>
+                <a class="botao" href="#detalhes-rocadora-campo">Fazer Encomenda</a>
             </article>
         </div>
     </section>
@@ -68,5 +131,51 @@
 <footer>
     <p>&copy; 2026 Joaquim Luís Simões - Oficina e Loja de Moto-serras &amp; Máquinas de Relva</p>
 </footer>
+
+<!-- ===================== MODAIS DE CARACTERÍSTICAS (SEM JS) ===================== -->
+
+<!-- Modal Motoserra Floresta 45 -->
+<div class="modal-produto" id="detalhes-motoserra45">
+    <div class="modal-caixa">
+        <a href="#fechar" class="modal-fechar" aria-label="Fechar">&times;</a>
+        <h2>Motoserra Floresta 45</h2>
+        <ul>
+            <li>Cilindrada: 45 cc</li>
+            <li>Comprimento de barra: 45 cm</li>
+            <li>Ideal para lenha e poda de árvores de médio porte</li>
+        </ul>
+        <!-- Leva para a secção de motosserras no formulário de compras -->
+        <a class="botao" href="compras.html#motoserras">Continuar para formulário</a>
+    </div>
+</div>
+
+<!-- Modal Corta-relva Jardim 500 -->
+<div class="modal-produto" id="detalhes-cortarelva500">
+    <div class="modal-caixa">
+        <a href="#fechar" class="modal-fechar" aria-label="Fechar">&times;</a>
+        <h2>Corta-relva Jardim 500</h2>
+        <ul>
+            <li>Largura de corte: 50 cm</li>
+            <li>Indicado para jardins até 800 m²</li>
+            <li>Depósito de recolha de 55 L</li>
+        </ul>
+        <a class="botao" href="compras.html#cortarelvas">Continuar para formulário</a>
+    </div>
+</div>
+
+<!-- Modal Roçadora Campo Pro -->
+<div class="modal-produto" id="detalhes-rocadora-campo">
+    <div class="modal-caixa">
+        <a href="#fechar" class="modal-fechar" aria-label="Fechar">&times;</a>
+        <h2>Roçadora Campo Pro</h2>
+        <ul>
+            <li>Motor 2 tempos 52 cc</li>
+            <li>Cabeça de nylon + disco incluídos</li>
+            <li>Ideal para terrenos com erva alta e mato</li>
+        </ul>
+        <a class="botao" href="compras.html#rocadoras">Continuar para formulário</a>
+    </div>
+</div>
+
 </body>
 </html>

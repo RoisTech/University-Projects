@@ -1,28 +1,36 @@
-﻿:root {
+﻿/* ===========================
+   VARIÁVEIS E BASE GLOBAL
+   =========================== */
+
+:root {
+    /* Paleta de cores principal do site */
     --cor-primaria: #145A32;
     --cor-secundaria: #F39C12;
     --cor-fundo: #F5F5F5;
     --cor-texto: #222222;
     --cor-card: #ffffff;
     --cor-borda-suave: #e0e0e0;
+
+    /* Fontes globais */
     --fonte-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     --fonte-titulos: "Oswald", "Roboto Condensed", "Segoe UI", sans-serif;
 }
 
-/* reset simples */
-
+/* Reset simples: remove margens padrão e define fundo verde atrás do topo */
 html {
     margin: 0;
     padding: 0;
-    background-color: #145A32; /* garante que não há faixa branca no topo */
+    background-color: #145A32;
 }
 
+/* Garante que todos os elementos usam box-sizing mais previsível */
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
+/* Estilo base do body: fonte, cor de fundo e texto */
 body {
     margin: 0;
     padding: 0;
@@ -32,8 +40,11 @@ body {
     line-height: 1.6;
 }
 
-/* TOPO – logo + título + menu tipo “pill” */
+/* ===========================
+   TOPO / HEADER
+   =========================== */
 
+/* Faixa superior verde com logo + título + menu */
 .topo-site {
     background-color: var(--cor-primaria);
     color: #ffffff;
@@ -41,71 +52,90 @@ body {
     border-radius: 0;
 }
 
+/* Barra que contém logo à esquerda e menu à direita */
 .barra-superior {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0.75rem 1.5rem 1.25rem;
+    max-width: 100%;             /* ocupa toda a largura */
+    margin: 0;
+    padding: 0.75rem 0.75rem 1.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 1.5rem;                  /* espaço entre zona de logo e menu */
 }
 
+/* Agrupa logo e texto do título */
 .logo-area {
     display: flex;
     align-items: center;
     gap: 1.25rem;
 }
 
+/* Imagem do logo: maior, com cantos arredondados e sombra */
 .logo-area img {
-    max-height: 80px;
+    max-height: 120px;
+    max-width: 100%;
+    height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.35);
 }
 
+/* Título principal do site */
 .titulo-site h1 {
     font-family: var(--fonte-titulos);
     font-size: 2.2rem;
     margin: 0;
 }
 
+/* Subtítulo (linha com "Motos · Bicicletas · Jardinagem") */
 .titulo-site p {
     margin: 0.25rem 0 0;
     font-size: 0.95rem;
     opacity: 0.9;
 }
 
-/* menu principal */
-
-.menu-principal {
+/* Wrapper opcional para agrupar menu e outros itens no topo (ex.: ícone carrinho) */
+.nav-area {
     display: flex;
-    gap: 1rem;
     align-items: center;
+    gap: 0.6rem;           /* espaço entre menu e outros itens */
+    margin-left: auto;     /* empurra o grupo para a direita */
+    padding-right: 0.75rem;
 }
 
+/* Menu principal em formato “pill” (links arredondados) */
+.menu-principal {
+    display: flex;
+    gap: 0.35rem;          /* espaço entre os links (mais juntos) */
+    align-items: center;
+    /* Se o nav for filho direto de .barra-superior e não houver .nav-area,
+       podes usar margin-left:auto aqui para empurrar o menu para a direita. */
+}
+
+/* Links do menu: pill com hover */
 .menu-principal a {
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
-    padding: 0.5rem 1.2rem;
+    padding: 0.4rem 0.75rem;
     border-radius: 999px;
     position: relative;
     transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
     font-size: 0.95rem;
 }
 
+/* Efeito hover / focus no menu */
 .menu-principal a:hover,
 .menu-principal a:focus {
     background-color: rgba(0,0,0,0.18);
     transform: translateY(-1px);
 }
 
-/* link ativo com pill cheia e sublinhado */
-
+/* Link ativo com pill marcada */
 .menu-principal a.ativo {
     background-color: rgba(0,0,0,0.22);
 }
 
+/* Sub-linha centralizada no link ativo */
 .menu-principal a.ativo::after {
     content: "";
     position: absolute;
@@ -118,16 +148,22 @@ body {
     background-color: #ffffff;
 }
 
-/* layout principal */
+/* ===========================
+   LAYOUT PRINCIPAL
+   =========================== */
 
+/* Container principal do conteúdo */
 main {
     max-width: 1100px;
     margin: 1.5rem auto 0;
     padding: 0 1rem 2rem;
 }
 
-/* hero vídeo (home) */
+/* ===========================
+   HERO VÍDEO (HOME)
+   =========================== */
 
+/* Secção hero com vídeo de apresentação */
 .hero-video {
     display: grid;
     grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
@@ -140,24 +176,30 @@ main {
     margin-bottom: 2rem;
 }
 
+/* Vídeo dentro do hero */
 .hero-video video {
     width: 500px;
     border-radius: 6px;
     background-color: #111;
 }
 
+/* Título da secção hero */
 .hero-video h2 {
     font-family: var(--fonte-titulos);
     margin-top: 0;
     margin-bottom: 0.5rem;
 }
 
+/* Texto do hero */
 .hero-video p {
     margin-top: 0;
 }
 
-/* botões */
+/* ===========================
+   BOTÕES GENÉRICOS
+   =========================== */
 
+/* Botões principais (inclui links com classe .botao e elementos <button>) */
 .botao,
 button {
     display: inline-block;
@@ -171,6 +213,7 @@ button {
     font-weight: 600;
 }
 
+/* Hover / focus dos botões */
 .botao:hover,
 .botao:focus,
 button:hover,
@@ -181,7 +224,9 @@ button:focus {
     transition: all 0.2s ease-in-out;
 }
 
-/* cards de serviços (home/serviços) */
+/* ===========================
+   CARDS DE SERVIÇOS
+   =========================== */
 
 .servicos-destaque {
     margin-bottom: 2rem;
@@ -192,12 +237,14 @@ button:focus {
     margin-bottom: 1rem;
 }
 
+/* Grelha dos cards de serviços */
 .cards-servicos {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1rem;
 }
 
+/* Card simples (serviços) */
 .card {
     background-color: var(--cor-card);
     padding: 1rem;
@@ -205,7 +252,9 @@ button:focus {
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
-/* figure */
+/* ===========================
+   FIGURE / IMAGENS DESTACADAS
+   =========================== */
 
 .figure-sec h2 {
     font-family: var(--fonte-titulos);
@@ -229,7 +278,9 @@ button:focus {
     margin-top: 0.4rem;
 }
 
-/* tabelas (serviços / horário) */
+/* ===========================
+   TABELAS (SERVIÇOS / HORÁRIO)
+   =========================== */
 
 table {
     width: 100%;
@@ -258,7 +309,9 @@ thead {
     background-color: #f0f0f0;
 }
 
-/* grelha produtos (LOJA) */
+/* ===========================
+   GRELHA DE PRODUTOS (LOJA)
+   =========================== */
 
 .grelha-produtos {
     display: grid;
@@ -267,6 +320,7 @@ thead {
     margin-top: 1.5rem;
 }
 
+/* Card de produto na página LOJA */
 .produto {
     background-color: #ffffff;
     padding: 1rem;
@@ -289,13 +343,16 @@ thead {
     font-size: 1.1rem;
 }
 
+/* Subtítulo curto nos cards de produto */
 .produto-subtitulo {
     margin: 0;
     font-size: 0.9rem;
     color: #666666;
 }
 
-/* CATÁLOGO (página Compras) */
+/* ===========================
+   CATÁLOGO (PÁGINA COMPRAS)
+   =========================== */
 
 .catalogo {
     margin-top: 2rem;
@@ -322,6 +379,7 @@ thead {
     gap: 1rem;
 }
 
+/* Item de catálogo genérico */
 .item-catalogo {
     background-color: var(--cor-card);
     border-radius: 8px;
@@ -367,7 +425,9 @@ thead {
     color: #555555;
 }
 
-/* formulário (contactos) */
+/* ===========================
+   FORMULÁRIO (CONTACTOS)
+   =========================== */
 
 .form-servico fieldset {
     border: 1px solid var(--cor-borda-suave);
@@ -386,6 +446,7 @@ thead {
     font-size: 0.9rem;
 }
 
+/* Campos de input, select e textarea */
 .form-servico input,
 .form-servico select,
 .form-servico textarea {
@@ -397,7 +458,9 @@ thead {
     font: inherit;
 }
 
-/* estados de foco acessíveis */
+/* ===========================
+   ESTADOS DE FOCO (ACESSO)
+   =========================== */
 
 a:focus,
 button:focus,
@@ -408,7 +471,9 @@ textarea:focus {
     outline-offset: 2px;
 }
 
-/* promo (aside) */
+/* ===========================
+   BLOCOS PROMO
+   =========================== */
 
 .promo {
     background-color: #d5f5e3;
@@ -418,24 +483,26 @@ textarea:focus {
     border-radius: 4px;
 }
 
-/* vídeo e mapa na página de contactos */
+/* ===========================
+   VÍDEO E MAPA CONTACTOS
+   =========================== */
 
 .top-video {
     margin-top: 1.5rem;
     margin-bottom: 2rem;
     background-color: #ffffff;
-    padding: 0;                 /* sem espaço à volta do vídeo */
-    border-radius: 8px;
+    padding: 0;
+    border-radius: 14px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    overflow: hidden;           /* corta o que sair fora do retângulo */
+    overflow: hidden;
 }
 
 .video-topo {
     width: 100%;
-    height: 260px;              /* ajusta a altura conforme quiseres */
+    height: 260px;
     display: block;
-    object-fit: cover;          /* vídeo preenche e é recortado */
-    background-color: #111;
+    object-fit: cover;
+    background-color: #000;
 }
 
 .mapa iframe {
@@ -444,7 +511,9 @@ textarea:focus {
     border-radius: 8px;
 }
 
-/* secção Como chegar */
+/* ===========================
+   SECÇÃO "COMO CHEGAR"
+   =========================== */
 
 .como-chegar {
     margin-top: 2rem;
@@ -460,7 +529,9 @@ textarea:focus {
     margin-bottom: 0.75rem;
 }
 
-/* rodapé */
+/* ===========================
+   RODAPÉ
+   =========================== */
 
 footer {
     background-color: #0f4225;
@@ -471,7 +542,149 @@ footer {
     font-size: 0.9rem;
 }
 
-/* responsivo */
+/* ===========================
+   CARDS COMPACTOS – GAMA RELACIONADA
+   =========================== */
+
+/* Grelha flexível de cards relacionados (motosserras, corta-relvas, roçadoras) */
+.grelha-relacionados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+/* Card compacto profissional */
+.card-relacionado {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%;          /* garante altura homogénea na grelha */
+}
+
+/* Imagem do produto (mais pequena) */
+.card-relacionado img {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 8px;
+}
+
+/* Título do card */
+.card-relacionado h4 {
+    font-family: var(--fonte-titulos);
+    font-size: 1rem;
+    margin: 0 0 4px 0;
+}
+
+/* Texto/descrição curta */
+.card-relacionado p {
+    font-size: 0.85rem;
+    color: #555555;
+    margin: 0 0 6px 0;
+}
+
+/* Preço em destaque */
+.card-relacionado .preco {
+    font-weight: 700;
+    color: #2e7d32;
+    margin-bottom: 8px;
+}
+
+/* Espaçador flex: empurra o botão para o fundo do card,
+   para todos os botões ficarem alinhados na mesma linha */
+.card-relacionado .spacer {
+    flex-grow: 1;
+}
+
+/* Botão “Ver detalhes / Comprar” com ícone de carrinho */
+.card-relacionado .btn-detalhes {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #2e7d32;
+    color: #ffffff;
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    text-decoration: none;
+}
+
+/* Ícone de carrinho simples (podes remover o content se não quiseres emoji) */
+.card-relacionado .btn-detalhes::before {
+    content: "🛒";
+    font-size: 0.9rem;
+}
+
+/* Hover do botão de detalhes */
+.card-relacionado .btn-detalhes:hover,
+.card-relacionado .btn-detalhes:focus {
+    background-color: #256227;
+}
+
+/* ===========================
+   MODAIS CSS-ONLY (DETALHES)
+   =========================== */
+
+/* Overlay sem JS: escondido por defeito */
+.modal-produto {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0,0,0,0.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Quando o id do modal é alvo de um link (#detalhes-...), mostra */
+.modal-produto:target {
+    display: flex;
+}
+
+/* Caixa interna do modal (conteúdo) */
+.modal-caixa {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 420px;
+    width: 90%;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    position: relative;
+}
+
+/* Botão de fechar (X) no canto do modal */
+.modal-fechar {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.7rem;
+    text-decoration: none;
+    font-size: 1.6rem;
+    color: #333333;
+}
+
+.modal-caixa h2 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.modal-caixa ul {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 1.2rem;
+}
+
+.modal-caixa ul li {
+    margin-bottom: 0.2rem;
+}
+
+/* ===========================
+   RESPONSIVO
+   =========================== */
 
 @media (max-width: 900px) {
     .cards-servicos {
@@ -507,9 +720,16 @@ footer {
     .catalogo-grelha {
         grid-template-columns: 1fr;
     }
+
+    .video-topo {
+        height: 260px;
+        max-height: 60vh;
+    }
 }
 
-/* acessibilidade: menos movimento */
+/* ===========================
+   ACESSIBILIDADE: MENOS MOVIMENTO
+   =========================== */
 
 @media (prefers-reduced-motion: reduce) {
     * {
@@ -520,8 +740,11 @@ footer {
     }
 }
 
-/* animação suave no botão de CTA */
+/* ===========================
+   ANIMAÇÃO CTA
+   =========================== */
 
+/* Animação suave no botão de chamada para ação */
 @keyframes pulse-botao {
     0%   { transform: scale(1); }
     50%  { transform: scale(1.02); }
@@ -531,36 +754,23 @@ footer {
 .cta .botao {
     animation: pulse-botao 2.5s ease-in-out infinite;
 }
-/* vídeo e mapa na página de contactos */
 
-.top-video {
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
-    background-color: #ffffff;
-    padding: 0;                 /* o vídeo encosta às bordas internas */
-    border-radius: 14px;        /* mesmo raio que vês no retângulo */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-    overflow: hidden;           /* corta o que sair fora do retângulo */
-}
+/* ===========================
+   PRODUTOS RELACIONADOS (ESTRUTURA ANTIGA)
+   =========================== */
 
-.video-topo {
-    width: 100%;
-    height: 260px;              /* altura do retângulo – ajusta se quiseres */
-    display: block;
-    object-fit: cover;          /* vídeo preenche o retângulo */
-    background-color: #000;     /* preto enquanto não carrega */
-}
-
-    
+/* Secções de produtos relacionados controladas por âncoras (#motoserras, #cortarelvas...) */
 .produtos-relacionados {
     display: none;
     margin-top: 30px;
 }
 
+/* Mostra a secção quando é alvo de âncora (ex.: compras.html#motoserras) */
 .produtos-relacionados:target {
     display: block;
 }
 
+/* Grelha antiga (ainda usada em combinações ou transição) */
 .grid-produtos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -568,6 +778,7 @@ footer {
     margin-top: 20px;
 }
 
+/* Card antigo de produto (ainda útil se reaproveitares noutras secções) */
 .produto-item {
     border: 1px solid #ddd;
     padding: 15px;
@@ -583,7 +794,7 @@ footer {
     border-radius: 4px;
     background-color: #eee;
 }
-        
+
 .produto-item h4 {
     margin: 12px 0 6px 0;
     color: #333;
@@ -615,6 +826,7 @@ footer {
     font-size: 0.85em;
 }
 
+/* Mensagem de ajuda/navegação na página de compras */
 .mensagem-selecao {
     margin-top: 30px;
     padding: 20px;
@@ -623,19 +835,19 @@ footer {
     border-radius: 4px;
 }
 
-/* Esconde a mensagem padrão caso o utilizador tenha chegado de um clique de produto */
+/* Esconde mensagem padrão se o utilizador veio de uma âncora de produto */
 #motoserras:target ~ .mensagem-selecao,
 #cortarelvas:target ~ .mensagem-selecao,
 #rocadoras:target ~ .mensagem-selecao {
     display: none;
 }
 
-/* Alinhamento flexível para estruturar a ordem na página */
+/* Layout flex da página de compras (texto + produtos + mensagem) */
 .main-flex {
     display: flex;
     flex-direction: column;
 }
 
-.seccao-base { order: 1; }
-.produtos-relacionados { order: 2; }
-.mensagem-selecao { order: 3; }
+.seccao-base { order: 1; }          /* texto informativo */
+.produtos-relacionados { order: 2; }/* gamas relacionadas */
+.mensagem-selecao { order: 3; }     /* mensagem de nota */
