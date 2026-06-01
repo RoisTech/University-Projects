@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="pt-PT">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactos - Oficina Joaquim Luís Simões</title>
@@ -9,8 +8,10 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
 <header class="topo-site">
     <div class="barra-superior">
+        
         <div class="logo-area">
             <img src="img/logo/logo.jpg" alt="Logotipo Joaquim Luís Simões">
             <div class="titulo-site">
@@ -20,45 +21,29 @@
         </div>
 
         <nav class="menu-principal">
-    <a href="index.html">Início</a>
-    <a href="loja.html">Produtos</a>
-    <a href="servicos.html">Serviços</a>
-    <a href="compras.html">Compras</a>
-    <a href="carrinho.html">Carrinho</a>
-    <a href="contactos.html" class="ativo">Contactos</a>
+            <a href="index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="servicos.html">Serviços</a>
+            <a href="compras.html">Compras</a>
+            <a href="carrinho.html">Carrinho</a>
+            <a href="contactos.html" class="ativo">Contactos</a>
         </nav>
+        
     </div>
 </header>
 
 <main>
-    <!-- hero com mapa -->
-    <section class="hero-video">
-        <div class="hero-mapa">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3124.276135!2d-8.691!3d39.233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRua%20das%20M%C3%A1quinas%20de%20Jardim%20123%2C%20Santar%C3%A9m!5e0!3m2!1spt-PT!2spt!4v0000000000"
-                width="100%"
-                height="320"
-                style="border:0;"
-                allowfullscreen
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                title="Mapa com localização da oficina">
-            </iframe>
-        </div>
-        <div class="hero-texto">
-            <h2>Visite a nossa oficina</h2>
-            <p>Estamos em Santarém, na Rua das Máquinas de Jardim, com estacionamento fácil à porta.</p>
-            <p>Use o formulário abaixo para marcar o serviço e garantir o melhor horário para si.</p>
-        </div>
+    
+
+    <section class="contactos" style="margin-top: 20px;">
+        <h2>Contactos e Localização</h2>
+        <p><strong>Morada:</strong> Rua das Máquinas de Jardim, 123, 2000-000 Santarém</p>
+        <p><strong>Telefone:</strong> 912 345 678 · <strong>Email:</strong> oficina@exemplo.pt</p>
+        <p>Estamos em Santarém, na zona industrial, com estacionamento fácil à porta. Use o formulário abaixo para marcar o seu serviço e garantir o melhor horário.</p>
     </section>
 
-    <!-- contactos / morada -->
-    <section class="contactos">
-        <h2>Contactos e localização</h2>
-        <p>Morada fictícia: Rua das Máquinas de Jardim, 123, 2000-000 Santarém</p>
-        <p>Telefone: 912 345 678 · Email: oficina@exemplo.pt</p>
-
-        <h3>Marcação de serviço</h3>
+    <section class="marcacao-servico">
+        <h3>Marcação de Serviço</h3>
         <form action="#" method="post" class="form-servico">
             <fieldset>
                 <legend>Dados do cliente</legend>
@@ -70,71 +55,87 @@
                 <input type="email" id="email" name="email" required>
 
                 <label for="telefone">Telefone</label>
-                <input type="tel" id="telefone" name="telefone"
-                       pattern="[0-9]{9}" placeholder="9 dígitos">
+                <input type="tel" id="telefone" name="telefone" pattern="[0-9]{9}" placeholder="9 dígitos">
 
+            
                 <label for="equipamento">Tipo de equipamento</label>
                 <select id="equipamento" name="equipamento" required>
                     <option value="">— escolher —</option>
-                    <option>Moto-serra</option>
-                    <option>Máquina de relva</option>
-                    <option>Roçadora</option>
-                    <option>Outro</option>
+                    <option value="Moto-serra">Moto-serra</option>
+                    <option value="Máquina de relva">Máquina de relva</option>
+                    <option value="Roçadora">Roçadora</option>
+                    <option value="Outro">Outro</option>
                 </select>
 
+            
                 <label for="data">Data preferida</label>
                 <input type="date" id="data" name="data">
 
+            
                 <label for="mensagem">Descrição do problema</label>
                 <textarea id="mensagem" name="mensagem" rows="4"></textarea>
 
+            
                 <button type="submit">Enviar pedido</button>
             </fieldset>
         </form>
     </section>
 
-    <!-- horário -->
     <section class="horario">
-        <h3>Horário de funcionamento</h3>
+        <h3>Horário de Funcionamento</h3>
         <table>
             <caption>Horário semanal</caption>
             <thead>
-            <tr>
-                <th>Dia</th>
-                <th>Abertura</th>
-                <th>Fecho</th>
-            </tr>
+                <tr>
+                    <th>Dia</th>
+                    <th>Abertura</th>
+                    <th>Fecho</th>
+                </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Segunda a Sexta</td>
-                <td>09:00</td>
-                <td>18:00</td>
-            </tr>
-            <tr>
-                <td>Sábado</td>
-                <td>09:00</td>
-                <td>13:00</td>
-            </tr>
-            <tr>
-                <td>Domingo</td>
-                <td colspan="2">Encerrado</td>
-            </tr>
+                <tr>
+                    <td>Segunda a Sexta</td>
+                    <td>09:00</td>
+                    <td>18:00</td>
+                </tr>
+                <tr>
+                    <td>Sábado</td>
+                    <td>09:00</td>
+                    <td>13:00</td>
+                </tr>
+                <tr>
+                    <td>Domingo</td>
+                    <td colspan="2">Encerrado</td>
+                </tr>
             </tbody>
         </table>
     </section>
 
-    <!-- como chegar -->
+
     <section class="como-chegar">
-        <h3>Como chegar</h3>
-        <p>A oficina situa-se na zona industrial de Santarém, com estacionamento
-           fácil à porta. Pode chegar de carro pela EN3 ou utilizar os autocarros
-           urbanos com paragem a 5 minutos a pé.</p>
+        <h3>Como Chegar</h3>
+        <p>A oficina situa-se na zona industrial de Santarém, com estacionamento fácil à porta. Pode chegar de carro pela EN3 ou utilizar os autocarros urbanos com paragem a 5 minutos a pé.</p>
+    </section>
+
+    <section class="hero-video" style="margin-top: 30px; width: 100%;">
+        <div class="hero-mapa" style="width: 100%; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+            <iframe
+                src="https://maps.google.com/maps?q=Zona%20Industrial%20Santar%C3%A9m,%20Portugal&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                width="800"
+                height="320"
+                style="border:0; width: 100%; display: block;"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Localização exata da oficina no mapa de Santarém">
+            </iframe>
+        </div>
     </section>
 </main>
 
 <footer>
-    <p>&copy; 2026 Joaquim Luís Simões - Oficina e Loja de Motoserras &amp; Máquinas de Relva</p>
+    <p>© 2026 Sérgio Simões - Oficina e Loja de Motoserras &amp; Máquinas de Relva</p>
 </footer>
+
 </body>
 </html>

@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compras - Oficina Joaquim Luís Simões</title>
-    <meta name="description" content="Informação sobre encomendas, pagamentos e condições de compra na oficina Joaquim Luís Simões.">
+    <meta name="description" content="Condições de compra e tabelas de artigos detalhadas.">
     <link rel="icon" href="favicon.ico">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .tabela-catalogo {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background-color: #1e1e1e;
+            border: 1px solid #2d2d2d;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .tabela-catalogo th, .tabela-catalogo td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #2d2d2d;
+            font-size: 14px;
+        }
+        .tabela-catalogo th {
+            background-color: #2d6a4f;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .tabela-catalogo tr:hover {
+            background-color: #252525;
+        }
+        .foto-tabela {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            background-color: #fff;
+            border-radius: 4px;
+            display: block;
+        }
+        .bloco-categoria {
+            margin-top: 40px;
+            padding-top: 20px;
+        }
+    </style>
 </head>
 <body>
 <header class="topo-site">
@@ -18,10 +55,9 @@
                 <p>Motos · Bicicletas · Jardinagem</p>
             </div>
         </div>
-
         <nav class="menu-principal">
             <a href="index.html">Início</a>
-            <a href="loja.html">Produtos</a>
+            <a href="produtos.html">Produtos</a>
             <a href="servicos.html">Serviços</a>
             <a href="compras.html" class="ativo">Compras</a>
             <a href="carrinho.html">Carrinho</a>
@@ -30,372 +66,136 @@
     </div>
 </header>
 
-<main class="main-flex">
-    <!-- Bloco de texto base -->
-    <div class="seccao-base">
-        <section>
-            <h2>Informação de Compras</h2>
-            <p>Aqui encontra as condições gerais para compra de equipamentos e serviços na oficina Joaquim Luís Simões.</p>
-            <ul>
-                <li>Pagamentos em numerário, MBWay ou transferência bancária.</li>
-                <li>Encomendas levantadas em loja ou envio por transportadora (sob consulta).</li>
-                <li>Garantia mínima de 2 anos em todos os equipamentos novos.</li>
-                <li>Serviços de oficina faturados após verificação e aprovação do orçamento.</li>
-            </ul>
-        </section>
-
-        <section>
-            <h3>Processo de Encomenda</h3>
-            <ol>
-                <li>Escolha o equipamento base na página <a href="loja.html">Produtos</a>.</li>
-                <li>Analise a gama completa de modelos semelhantes exibida abaixo.</li>
-                <li>Submeta os seus dados finais preenchendo a lista na página de <a href="carrinho.html">Carrinho</a>.</li>
-            </ol>
-        </section>
-    </div>
-
-    <!-- ===================== MOTOSSERRAS ===================== -->
-    <section id="motoserras" class="produtos-relacionados">
-        <h3>Gama Relacionada: Moto-serras Disponíveis</h3>
-        <p>Modelos adicionais em stock ajustados para diferentes intensidades de corte florestal e agrícola.</p>
-
-        <div class="grelha-relacionados">
-
-            <article class="card-relacionado">
-                <img src="img/produtos/motoserras/motoserra1.jpg" alt="Motosserra DCS-3500T + Pack">
-                <h4>Motosserra DCS-3500T + Pack</h4>
-                <p>A ECHO DCS-3500T é uma motosserra a bateria desenvolvida para profissionais.</p>
-                <p class="preco">989,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-moto1" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/motoserras/motoserra2.jpg" alt="Motosserra DCS-3000T + Pack">
-                <h4>Motosserra DCS-3000T + Pack</h4>
-                <p>Motosserra a bateria para poda, com tecnologia avançada e grande controlo.</p>
-                <p class="preco">669,01€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-moto2" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/motoserras/motoserra3.jpg" alt="Motosserra DCS-3500T">
-                <h4>Motosserra DCS-3500T</h4>
-                <p>Motosserra a bateria desenvolvida para profissionais exigentes.</p>
-                <p class="preco">619,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-moto3" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/motoserras/motoserra4.jpg" alt="Motosserra DCS-3000T">
-                <h4>Motosserra DCS-3000T</h4>
-                <p>Nova geração de motosserras a bateria para poda.</p>
-                <p class="preco">319,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-moto4" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/motoserras/motoserra5.jpg" alt="Motosserra CS-3410ES">
-                <h4>Motosserra CS-3410ES</h4>
-                <p>Chassis robusto de alta cilindrada para trabalhos florestais duros.</p>
-                <p class="preco">349,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-moto5" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/motoserras/motoserra6.jpg" alt="CS-4920">
-                <h4>CS-4920</h4>
-                <p>Equilíbrio ótimo entre peso e potência para uso agrícola diário.</p>
-                <p class="preco">659,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-moto6" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/motoserras/motoserra7.jpg" alt="CS-4010">
-                <h4>CS-4010</h4>
-                <p>Carburador eletrónico otimizado para consumo reduzido.</p>
-                <p class="preco">569,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-moto7" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/motoserras/motoserra8.jpg" alt="Motosserra CS-7310sx">
-                <h4>Motosserra CS-7310sx</h4>
-                <p>Sistema de arranque fácil com mola, ideal para utilizadores ocasionais.</p>
-                <p class="preco">1199,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-moto8" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/motoserras/motoserra9.jpg" alt="Motosserra CS-621sx">
-                <h4>Motosserra CS-621sx</h4>
-                <p>Equipada com sistemas avançados antivibração nos punhos.</p>
-                <p class="preco">999,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-moto9" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/motoserras/motoserra10.jpg" alt="Motosserra CS-4310sx">
-                <h4>Motosserra CS-4310sx</h4>
-                <p>Componentes internos em liga de magnésio de alta durabilidade.</p>
-                <p class="preco">799,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-moto10" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-        </div>
+<main style="max-width: 1200px; margin: 0 auto; padding: 20px;">
+    <section style="margin-top: 20px;">
+        <h2>Informação de Compras</h2>
+        <p style="color: #ccc; margin-bottom: 20px;">Aqui encontra as condições gerais para compra de equipamentos e serviços na nossa oficina.</p>
+        <ul style="margin-left: 20px; margin-bottom: 30px; color: #ccc; line-height: 1.8;">
+            <li>Pagamentos seguros em numerário, MBWay ou transferência bancária.</li>
+            <li>Encomendas levantadas diretamente na oficina em Santarém.</li>
+            <li>Garantia integral em todos os equipamentos novos.</li>
+        </ul>
     </section>
 
-    <!-- ===================== CORTA-RELVAS ===================== -->
-    <section id="cortarelvas" class="produtos-relacionados">
-        <h3>Gama Relacionada: Corta-relvas Disponíveis</h3>
-        <p>Modelos adicionais manuais, elétricos, térmicos ou robóticos para manter o relvado impecável.</p>
+    <section class="listas-artigos" style="margin-top: 50px; border-top: 1px solid #2d2d2d; padding-top: 20px;">
+        <h2 style="text-align: center; color: #fff;">Catálogos Técnicos Disponíveis</h2>
 
-        <div class="grelha-relacionados">
+        <div id="cat-motoserras" class="bloco-categoria">
+            <h3 style="color: #4ade80; border-left: 4px solid #2e7d32; padding-left: 10px; margin-bottom: 10px;">Gama de Moto-serras (10 Modelos)</h3>
+            <table class="tabela-catalogo">
+                <thead>
+                    <tr>
+                        <th>Imagem</th>
+                        <th>Modelo</th>
+                        <th>Cilindrada</th>
+                        <th>Potência</th>
+                        <th>Lâmina</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="./img/produtos/motoserras/motoserra1.jpg" class="foto-tabela" alt=""></td>
+                        <td>Motoserra Florestal 350</td>
+                        <td>35.2 cc</td>
+                        <td>1.5 kW</td>
+                        <td>35 cm</td>
+                        <td><a class="botao" href="carrinho.html" style="padding: 6px 12px; font-size: 13px;">Encomendar</a></td>
+                    </tr>
+                    <tr>
+                        <td><img src="./img/produtos/motoserras/motoserra2.jpg" class="foto-tabela" alt=""></td>
+                        <td>Motoserra Florestal 420</td>
+                        <td>41.6 cc</td>
+                        <td>2.0 kW</td>
+                        <td>40 cm</td>
+                        <td><a class="botao" href="carrinho.html" style="padding: 6px 12px; font-size: 13px;">Encomendar</a></td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
 
-            <article class="card-relacionado">
-                <img src="img/produtos/corta_relvas/corta_relva1.jpg" alt="Corta-Relva DLM-5100SP+ Pack 5Ah">
-                <h4>Corta-Relva DLM-5100SP+ Pack 5Ah</h4>
-                <p>Corta-relva concebida para resultados profissionais em qualquer terreno.</p>
-                <p class="preco">1139,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-cr1" class="btn-detalhes">Ver detalhes</a>
-            </article>
+        <div id="cat-cortarelvas" class="bloco-categoria">
+            <h3 style="color: #4ade80; border-left: 4px solid #2e7d32; padding-left: 10px; margin-bottom: 10px;">Gama de Máquinas de Relva (10 Modelos)</h3>
+            <table class="tabela-catalogo">
+                <thead>
+                    <tr>
+                        <th>Imagem</th>
+                        <th>Modelo</th>
+                        <th>Largura de Corte</th>
+                        <th>Motorização</th>
+                        <th>Capacidade Saco</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="./img/produtos/corta-relva/corta_relva1.jpg" class="foto-tabela" alt=""></td>
+                        <td>Máquina de Relva Confort 46</td>
+                        <td>46 cm</td>
+                        <td>140 cc OHV</td>
+                        <td>60 Litros</td>
+                        <td><a class="botao" href="carrinho.html" style="padding: 6px 12px; font-size: 13px;">Encomendar</a></td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
 
-            <article class="card-relacionado">
-                <img src="img/produtos/corta_relvas/corta_relva2.jpg" alt="DLM-310/46SP + Pack 4Ah">
-                <h4>DLM-310/46SP + Pack 4Ah</h4>
-                <p>Corta relvados de forma eficiente, sem esforço e com resultados profissionais.</p>
-                <p class="preco">779,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-cr2" class="btn-detalhes">Ver detalhes</a>
-            </article>
+        <div id="cat-rocadoras" class="bloco-categoria">
+            <h3 style="color: #4ade80; border-left: 4px solid #2e7d32; padding-left: 10px; margin-bottom: 10px;">Gama de Roçadoras (10 Modelos)</h3>
+            <table class="tabela-catalogo">
+                <thead>
+                    <tr>
+                        <th>Imagem</th>
+                        <th>Modelo</th>
+                        <th>Cilindrada</th>
+                        <th>Tipo de Veio</th>
+                        <th>Peso Seco</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="./img/produtos/rocadoras/rocadora-01.jpg" class="foto-tabela" alt=""></td>
+                        <td>Roçadora Pro Campo 260</td>
+                        <td>25.4 cc</td>
+                        <td>Rígido 26mm</td>
+                        <td>5.4 Kg</td>
+                        <td><a class="botao" href="carrinho.html" style="padding: 6px 12px; font-size: 13px;">Encomendar</a></td>
+                    </tr>
+                    </tbody>
+            </table>
+        </div>
 
-            <article class="card-relacionado">
-                <img src="img/produtos/corta_relvas/corta_relva3.jpg" alt="DLM-310/46SP + Pack 2Ah">
-                <h4>DLM-310/46SP + Pack 2Ah</h4>
-                <p>Resultados profissionais sem o incómodo dos cabos ou do combustível.</p>
-                <p class="preco">729,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-cr3" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/corta_relvas/corta_relva4.jpg" alt="Corta-relva Gasolina Start">
-                <h4>Corta-relva Gasolina Start</h4>
-                <p>Motor a quatro tempos fiável para superfícies sem acesso a eletricidade.</p>
-                <p class="preco">629,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-cr4" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/corta_relvas/corta_relva5.jpg" alt="DLM-310/46P + Pack 2Ah">
-                <h4>DLM-310/46P + Pack 2Ah</h4>
-                <p>Modelo Garden+ com desempenho e usabilidade para jardins residenciais.</p>
-                <p class="preco">579,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-cr5" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/corta_relvas/corta_relva6.jpg" alt="DLM-310/35P + Pack 4Ah">
-                <h4>DLM-310/35P + Pack 4Ah</h4>
-                <p>Parte da linha Garden+, combina desempenho e facilidade de uso.</p>
-                <p class="preco">499,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-cr6" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/corta_relvas/corta_relva7.jpg" alt="DLM-310/35P + Pack 2Ah">
-                <h4>DLM-310/35P + Pack 2Ah</h4>
-                <p>Modelo Garden+ para jardins médios, leve e fácil de manobrar.</p>
-                <p class="preco">449,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-cr7" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/corta_relvas/corta_relva8.jpg" alt="Corta-Relva DLM-5100SP">
-                <h4>Corta-Relva DLM-5100SP</h4>
-                <p>Resultados profissionais em qualquer tipo de terreno.</p>
-                <p class="preco">749,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-cr8" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/corta_relvas/corta_relva9.jpg" alt="DLM-310/46SP">
-                <h4>DLM-310/46SP</h4>
-                <p>Linha Garden+ para transformar o seu espaço exterior.</p>
-                <p class="preco">529,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-cr9" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/corta_relvas/corta_relva10.jpg" alt="DLM-310/46P">
-                <h4>DLM-310/46P</h4>
-                <p>Solução sem cabos com resultados profissionais.</p>
-                <p class="preco">579,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-cr10" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
+        <div id="cat-tratores" class="bloco-categoria">
+            <h3 style="color: #4ade80; border-left: 4px solid #2e7d32; padding-left: 10px; margin-bottom: 10px;">Gama de Tratores Corta-Relva (10 Modelos)</h3>
+            <table class="tabela-catalogo">
+                <thead>
+                    <tr>
+                        <th>Imagem</th>
+                        <th>Modelo</th>
+                        <th>Largura de Corte</th>
+                        <th>Transmissão</th>
+                        <th>Potência Motor</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="./img/produtos/trator-relva/trator-relva-01.png" class="foto-tabela" alt="" style="background: transparent;"></td>
+                        <td>Trator Quinta Hydro 92</td>
+                        <td>92 cm</td>
+                        <td>Hidrostática</td>
+                        <td>13.5 HP</td>
+                        <td><a class="botao" href="carrinho.html" style="padding: 6px 12px; font-size: 13px;">Encomendar</a></td>
+                    </tr>
+                    </tbody>
+            </table>
         </div>
     </section>
-
-    <!-- ===================== ROÇADORAS ===================== -->
-    <section id="rocadoras" class="produtos-relacionados">
-        <h3>Gama Relacionada: Roçadoras Disponíveis</h3>
-        <p>Modelos adicionais indicados para cortes de cantos, ervas densas, silvados ou limpeza de valas.</p>
-
-        <div class="grelha-relacionados">
-
-            <article class="card-relacionado">
-                <img src="img/produtos/roçadoras/roçadora1.jpg" alt="Roçador SRM-301TES/U">
-                <h4>Roçador SRM-301TES/U</h4>
-                <p>Aparador ergonómico ideal para contornos de canteiros e calçadas.</p>
-                <p class="preco">519,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-rc1" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/roçadoras/roçadora2.jpg" alt="Roçador SRM-420ES-LW">
-                <h4>Roçador SRM-420ES-LW</h4>
-                <p>Leveza estrutural sem emissões de gases.</p>
-                <p class="preco">669,01€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-rc2" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/roçadoras/roçadora3.jpg" alt="CLS-520ES">
-                <h4>CLS-520ES</h4>
-                <p>Motor a dois tempos ágil para limpeza frequente de mato fino.</p>
-                <p class="preco">1138,99€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-rc3" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/roçadoras/roçadora4.jpg" alt="Roçador SRM-520ES">
-                <h4>Roçador SRM-520ES</h4>
-                <p>Kit multifunções para diferentes tarefas de corte.</p>
-                <p class="preco">1059,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-rc4" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/roçadoras/roçadora5.jpg" alt="Roçador SRM-3021TES/U">
-                <h4>Roçador SRM-3021TES/U</h4>
-                <p>Elevado poder de arranque e rotação estável.</p>
-                <p class="preco">678,99€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-rc5" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/roçadoras/roçadora6.jpg" alt="Roçador SRM-420ES">
-                <h4>Roçador SRM-420ES</h4>
-                <p>Mochila ergonómica traseira ideal para encostas íngremes.</p>
-                <p class="preco">889,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-rc6" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/roçadoras/roçadora7.jpg" alt="Roçador SRM-3611T/U">
-                <h4>Roçador SRM-3611T/U</h4>
-                <p>Cabeça de fio de nylon com avanço automático.</p>
-                <p class="preco">739,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-rc7" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/roçadoras/roçadora8.jpg" alt="Roçador SRM-3611T/L">
-                <h4>Roçador SRM-3611T/L</h4>
-                <p>Para cortar arbustos e ramagens densas.</p>
-                <p class="preco">678,99€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-rc8" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/roçadoras/roçadora9.jpg" alt="Roçador SRM-222ES/U">
-                <h4>Roçador SRM-222ES/U</h4>
-                <p>Inclui disco metálico dentado de alta resistência.</p>
-                <p class="preco">359,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-rc9" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-            <article class="card-relacionado">
-                <img src="img/produtos/roçadoras/roçadora10.jpg" alt="Roçador SRM-222ES/L">
-                <h4>Roçador SRM-222ES/L</h4>
-                <p>Guiador duplo ajustável para melhor distribuição de peso.</p>
-                <p class="preco">319,00€</p>
-                <div class="spacer"></div>
-                <a href="#detalhes-rc10" class="btn-detalhes">Ver detalhes</a>
-            </article>
-
-        </div>
-    </section>
-
-    <!-- Mensagem de ajuda -->
-    <div class="mensagem-selecao">
-        <p>💡 <strong>Informação de Navegação:</strong> Para ver os 10 modelos complementares em exposição nesta secção, escolha e clique em <em>"Fazer Encomenda"</em> num dos artigos principais da nossa <a href="loja.html">Loja</a>.</p>
-    </div>
 </main>
 
-<footer>
-    <p>&copy; 2026 Joaquim Luís Simões - Oficina e Loja de Moto-serras &amp; Máquinas de Relva</p>
+<footer style="background-color: #1b4332; border-top: 3px solid #2d6a4f; padding: 20px; text-align: center; margin-top: 60px; width: 100%;">
+    <p style="color: #ffffff; font-size: 14px; margin: 0; text-align: center;">© 2026 Sérgio Simões - Oficina e Loja de Motoserras &amp; Máquinas de Relva</p>
 </footer>
-
-<!-- ===================== MODAIS (EXEMPLOS) ===================== -->
-<!-- Repete/ajusta estes modais conforme precisares -->
-
-<div class="modal-produto" id="detalhes-moto1">
-  <div class="modal-caixa">
-    <a href="#fechar" class="modal-fechar" aria-label="Fechar">&times;</a>
-    <h2>Motosserra DCS-3500T + Pack</h2>
-    <ul>
-      <li>Bateria 2,5Ah e carregador incluídos</li>
-      <li>Indicada para corte florestal intensivo</li>
-      <li>Arranque fácil e baixo nível de vibrações</li>
-    </ul>
-    <p><strong>Preço:</strong> 989,00€</p>
-    <a class="botao" href="carrinho.html#motoserras">🛒 Comprar / Adicionar à encomenda</a>
-  </div>
-</div>
-
-<div class="modal-produto" id="detalhes-moto2">
-  <div class="modal-caixa">
-    <a href="#fechar" class="modal-fechar" aria-label="Fechar">&times;</a>
-    <h2>Motosserra DCS-3000T + Pack</h2>
-    <ul>
-      <li>Motosserra de poda leve e equilibrada</li>
-      <li>Bateria 2,5Ah e carregador incluídos</li>
-      <li>Perfeita para arboricultura profissional</li>
-    </ul>
-    <p><strong>Preço:</strong> 669,01€</p>
-    <a class="botao" href="carrinho.html#motoserras">🛒 Comprar / Adicionar à encomenda</a>
-  </div>
-</div>
-
-<!-- (podes criar modais semelhantes para moto3..moto10, cr1..cr10, rc1..rc10) -->
-
 </body>
 </html>
