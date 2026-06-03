@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contactos - Oficina Joaquim Luís Simões</title>
+    <meta name="description" content="Contacte a oficina Joaquim Luís Simões para marcação de serviços.">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Roboto+Condensed:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topo-site">
+    <div class="barra-superior">
+        <div class="logo-area">
+            <img src="img/logo/logo.jpg" alt="Joaquim Luís Simões" width="110" height="110">
+            <div class="titulo-site">
+                <h1>Joaquim Luís Simões</h1>
+                <p>Motos · Bicicletas · Jardinagem</p>
+            </div>
+        </div>
+        <nav class="menu-principal" aria-label="Navegação principal">
+            <a href="index.html">Início</a>
+            <a href="produtos.html">Produtos</a>
+            <a href="servicos.html">Serviços</a>
+            <a href="compras.html">Compras</a>
+            <a href="carrinho.html">Carrinho</a>
+            <a href="contactos.html" class="ativo">Contactos</a>
+        </nav>
+    </div>
+</header>
+
+<main class="contentor-principal">
+    <section class="bloco-info-contactos">
+        <h2>Contactos e Localização</h2>
+        
+        <p>
+            <strong>Morada:</strong> 
+            <a href="https://maps.google.com/maps?q=Rua%20das%20M%C3%A1quinas%20de%20Jardim,%20123,%20Santar%C3%A9m&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+               target="janela-mapa" 
+               class="link-morada-dinamica"
+               title="Clique para centralizar e ativar o Pin desta morada no mapa abaixo">
+               Rua João Caetano Lopes, 96 2125-179 Marinhais
+            </a>
+        </p>
+        
+        <p><strong>Telefone:</strong> 912 345 678 · <strong>Email:</strong> oficina@exemplo.pt</p>
+        <p class="texto-apoio-contacto">Estamos a 1200m do mercado mensal. A nossa morada acima está interligada com o mapa interativo no fundo da página.</p>
+    </section>
+
+    <section class="marcacao-servico">
+        <h3>Marcação de Serviço</h3>
+        <form action="#" method="post" class="form-servico">
+            <fieldset class="grupo-checkout">
+                <legend class="legenda-contacto-form">Dados para agendamento técnico</legend>
+
+                <div class="campo-grupo">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" pattern="[0-9]{9}" minlength="9" maxlength="9" placeholder="9 dígitos" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="equipamento">Tipo de equipamento</label>
+                    <select id="equipamento" name="equipamento" required>
+                        <option value="">— escolher —</option>
+                        <option value="Moto-serra">Moto-serra</option>
+                        <option value="Máquina de relva">Máquina de relva</option>
+                        <option value="Roçadora">Roçadora</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="data">Data preferida</label>
+                    <input type="date" id="data" name="data" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label for="mensagem">Descrição do problema</label>
+                    <textarea id="mensagem" name="mensagem" rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="btn-enviar-servico">Enviar pedido</button>
+            </fieldset>
+        </form>
+    </section>
+
+    <section class="horario-funcionamento-bloco">
+        <h3>Horário de Funcionamento</h3>
+        <table class="tabela-horario">
+            <caption>Horário semanal da oficina de assistência</caption>
+            <thead>
+                <tr>
+                    <th>Dia</th>
+                    <th>Abertura</th>
+                    <th>Fecho</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Segunda a Sexta</td>
+                    <td>09:00</td>
+                    <td>18:00</td>
+                </tr>
+                <tr>
+                    <td>Sábado</td>
+                    <td>09:00</td>
+                    <td>13:00</td>
+                </tr>
+                <tr>
+                    <td>Domingo</td>
+                    <td colspan="2">Encerrado</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="como-chegar-bloco">
+        <h3>Como Chegar</h3>
+        <p>Vindo pela Rua do Mercado, no cruzamento do Café toinito, vire à esquerda — a oficina situa-se logo a 300 metros, com estacionamento fácil à porta. Pode chegar confortavelmente de carro ou utilizar os transportes públicos locais com paragem a poucos minutos a pé.</p>
+    </section>
+
+    <section class="hero-mapa-bloco">
+        <h3>Localização no Mapa</h3>
+        <div class="mapa-moldura">
+            <iframe
+                src="https://maps.google.com/maps?q=Rua%20Jo%C3%A3o%20Caetano%20Lopes%2C%20Marinhais&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                name="janela-mapa"
+                width="800"
+                height="320"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Mapa interativo com Pin da Oficina Joaquim Luís Simões em Marinhais">
+            </iframe>
+        </div>
+    </section>
+</main>
+
+<footer class="rodape-site">
+    <p>© 2026 Sérgio Simões - Oficina e Loja de Motoserras & Máquinas de Relva</p>
+</footer>
+
+</body>
+</html>
