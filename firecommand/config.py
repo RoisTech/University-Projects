@@ -12,7 +12,7 @@ import os
 BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 
 # ------------------------------
-# Configuração da base de dados (MySQL - opcional)
+# Configuração da base de dados (MySQL)
 # ------------------------------
 
 DB_CONFIG = {
@@ -20,7 +20,7 @@ DB_CONFIG = {
     "port": 3306,
     "user": "root",
     "password": "12345678",
-    "database": "firecommand_db",
+    "database": "firecommand",
 }
 
 # ------------------------------
@@ -60,11 +60,8 @@ FICHEIRO_OCORRENCIAS = os.path.join(DADOS_DIR, "ocorrencias.csv")
 # ------------------------------
 
 DISTRITOS = [
-    "Viana do Castelo", "Braga", "Vila Real", "Bragança",
-    "Porto", "Aveiro", "Viseu", "Guarda",
-    "Coimbra", "Castelo Branco",
-    "Leiria", "Santarém",
-    "Lisboa", "Portalegre",
-    "Évora", "Setúbal",
-    "Beja", "Faro",
+    "Aveiro", "Beja", "Braga", "Bragança", "Castelo Branco",
+    "Coimbra", "Évora", "Faro", "Guarda", "Leiria", "Lisboa",
+    "Portalegre", "Porto", "Santarém", "Setúbal", "Viana do Castelo",
+    "Vila Real", "Viseu"
 ]

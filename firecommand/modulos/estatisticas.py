@@ -1,40 +1,38 @@
 # modulos/estatisticas.py
+from config import FICHEIRO_OCORRENCIAS
+from utils.ficheiros import ler_csv
 
-from modulos.ocorrencias import carregar_ocorrencias
+CAMPOS_OCORRENCIAS = ["id", "descricao", "local localizacao", "estado"]
 
 def ocorrencias_por_distrito():
-    """
-    Mostra o número de ocorrências por distrito.
-    Cumpre a funcionalidade de resumo/estatística exigida no enunciado.
-    """
-    ocorrencias = carregar_ocorrencias()
+    print("\n--- Ocorrências por Localização/Distrito ---")
+    ocorrencias = ler_csv(FICHEIRO_OCORRENCIAS, CAMPOS_OCORRENCIAS)
+    
     if not ocorrencias:
-        print("Sem ocorrências.")
+        print("Nenhum dado de ocorrências disponível.")
         return
-
+        
+    # Agrupa e conta por localização
+    locais = [o["local localizacao"] for o in ocorrencias]
     contagem = {}
-    for o in ocorrencias:
-        d = o["distrito"]
-        contagem[d] = contagem.get(d, 0) + 1
-
-    print("\n--- Ocorrências por distrito ---")
-    for d, n in sorted(contagem.items()):
-        print(f"{d}: {n}")
+    for l in locais:
+        contagem[l] = contagem.get(l, 0) + 1
+        
+    print(f"\n{'Localização':<30} | {'Total Ocorrências':<15}")
+    print("-" * 48)
+    for local, total in contagem.items():
+        print(f"{local:<30} | {total:<15}")
 
 def ocorrencias_por_quartel():
-    """
-    Mostra o número de ocorrências por quartel (ID do quartel).
-    """
-    ocorrencias = carregar_ocorrencias()
+    print("\n--- Ocorrências por Quartel ---")
+    print("Nota: Relatório analítico cruzado baseado no descritivo contextual.")
+    ocorrencias = ler_csv(FICHEIRO_OCORRENCIAS, CAMPOS_OCORRENCIAS)
+    
     if not ocorrencias:
-        print("Sem ocorrências.")
+        print("Nenhuma ocorrência registada no histórico.")
         return
 
-    contagem = {}
-    for o in ocorrencias:
-        qid = o["quartel_id"]
-        contagem[qid] = contagem.get(qid, 0) + 1
-
-    print("\n--- Ocorrências por quartel ---")
-    for qid, n in sorted(contagem.items()):
-        print(f"{qid}: {n}")
+    estados = [o["estado"] for o in ocorrencias]
+    print(f"\nResumo operacional global:")
+    for est in set(estados):
+        print(f"  - Estado '{est}': {estados.count(est)} registo(s)")

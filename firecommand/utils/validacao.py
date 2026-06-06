@@ -33,8 +33,13 @@ def ler_distrito():
     """
     Mostra a lista de distritos definidos em config.DISTRITOS e devolve o selecionado.
     """
-    print("Distritos disponíveis:")
+    if not DISTRITOS:
+        print("Aviso: Nenhum distrito configurado no sistema.")
+        return ""
+
+    print("\n--- Distritos disponíveis ---")
     for i, d in enumerate(DISTRITOS, start=1):
-        print(f"{i} - {d}")
-    idx = ler_int("Escolha o número do distrito: ", 1, len(DISTRITOS))
+        print(f"{i:2d} - {d}")
+        
+    idx = ler_int("\nEscolha o número do distrito: ", 1, len(DISTRITOS))
     return DISTRITOS[idx - 1]

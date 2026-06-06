@@ -63,7 +63,7 @@ def menu_quarteis():
             editar_quartel()
         elif op == 5:
             remover_quartel()
-        else:
+        elif op == 0:
             break
 
 def menu_ocorrencias():
@@ -84,7 +84,7 @@ def menu_ocorrencias():
             editar_ocorrencia()
         elif op == 4:
             remover_ocorrencia()
-        else:
+        elif op == 0:
             break
 
 def menu_estatisticas():
@@ -99,5 +99,5 @@ def menu_estatisticas():
             ocorrencias_por_distrito()
         elif op == 2:
             ocorrencias_por_quartel()
-        else:
+        elif op == 0:
             break

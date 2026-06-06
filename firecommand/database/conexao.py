@@ -1,14 +1,17 @@
 # database/conexao.py
 import mysql.connector
-
-DB_NAME = "firecommand"
-
+from config import DB_CONFIG
 
 def obter_conexao():
+    """
+    Cria e devolve uma conexão com a base de dados MySQL
+    utilizando as configurações centralizadas no config.py.
+    """
     conn = mysql.connector.connect(
-        host="localhost",
-        user="root",  # ajusta se tiveres outro utilizador
-        password="SUA_SENHA",  # mete aqui a tua password
-        database=DB_NAME,
+        host=DB_CONFIG["host"],
+        port=DB_CONFIG["port"],
+        user=DB_CONFIG["user"],
+        password=DB_CONFIG["password"],
+        database=DB_CONFIG["database"]
     )
     return conn

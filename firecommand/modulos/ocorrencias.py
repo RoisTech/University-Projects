@@ -1,124 +1,98 @@
 # modulos/ocorrencias.py
 from config import FICHEIRO_OCORRENCIAS
 from utils.ficheiros import ler_csv, gravar_csv
-from utils.validacao import ler_str, ler_distrito
-from modulos.quarteis import carregar_quarteis, listar_quarteis
+from utils.validacao import ler_str
 
-CAMPOS = ["id", "descricao", "distrito", "quartel_id"]
+# Sincronizado com os campos definidos no ficheiro anterior: id, descricao, local localizacao, estado
+CAMPOS = ["id", "descricao", "local localizacao", "estado"]
 
-def carregar_ocorrencias():
-    return ler_csv(FICHEIRO_OCORRENCIAS, CAMPOS)
-
-def guardar_ocorrencias(ocorrencias):
-    gravar_csv(FICHEIRO_OCORRENCIAS, ocorrencias, CAMPOS)
-
-def gerar_novo_id(ocorrencias):
-    """
-    Gera novo ID do tipo O1, O2, ...
-    """
-    if not ocorrencias:
-        return "O1"
-    nums = [
-        int(o["id"][1:])
-        for o in ocorrencias
-        if o["id"].startswith("O") and o["id"][1:].isdigit()
-    ]
-    novo = max(nums) + 1 if nums else 1
-    return f"O{novo}"
-
-def escolher_quartel():
-    """
-    Mostra lista de quarteis e devolve o ID escolhido.
-    """
-    quarteis = carregar_quarteis()
-    if not quarteis:
-        print("Não existem quarteis. Registe primeiro.")
-        return None
-    listar_quarteis()
-    qid = ler_str("ID do quartel responsável: ")
-    if any(q["id"] == qid for q in quarteis):
-        return qid
-    print("Quartel não encontrado.")
-    return None
+def inserir_ocorrência_manual(id_ocorrencia, descricao, localizacao, estado):
+    """Função utilitária interna para criar registo estruturado."""
+    return {
+        "id": str(id_ocorrencia),
+        "descricao": descricao,
+        "local localizacao": localizacao,
+        "estado": estado
+    }
 
 def inserir_ocorrencia():
-    """
-    Inserção de nova ocorrência (cumpre 'inserção de registos').
-    """
-    ocorrencias = carregar_ocorrencias()
-    novo_id = gerar_novo_id(ocorrencias)
-    print(f"ID da ocorrência: {novo_id}")
-    desc = ler_str("Descrição: ")
-    distrito = ler_distrito()
-    qid = escolher_quartel()
-    if qid is None:
-        return
-    ocorrencias.append({
-        "id": novo_id,
-        "descricao": desc,
-        "distrito": distrito,
-        "quartel_id": qid
-    })
-    guardar_ocorrencias(ocorrencias)
-    print("Ocorrência registada.")
+    print("\n--- Inserir Ocorrência ---")
+    ocorrencias = ler_csv(FICHEIRO_OCORRENCIAS, CAMPOS)
+    
+    proximo_id = 1
+    if ocorrencias:
+        try:
+            proximo_id = max(int(o["id"]) for o in ocorrencias) + 1
+        except ValueError:
+            proximo_id = len(ocorrencias) + 1
+
+    descricao = ler_str("Descrição da Ocorrência (ex: Incêndio Urbano): ")
+    localizacao = ler_str("Localização/Distrito/Quartel Responsável: ")
+    estado = "Ativa"
+    
+    nova = inserir_ocorrência_manual(proximo_id, descricao, localizacao, estado)
+    ocorrencias.append(nova)
+    
+    if gravar_csv(FICHEIRO_OCORRENCIAS, ocorrencias, CAMPOS):
+        print(f"Ocorrência #{proximo_id} inserida com sucesso!")
 
 def listar_ocorrencias():
-    """
-    Listagem de ocorrências, ordenadas por distrito.
-    """
-    ocorrencias = sorted(carregar_ocorrencias(), key=lambda o: o["distrito"])
+    ocorrencias = ler_csv(FICHEIRO_OCORRENCIAS, CAMPOS)
     if not ocorrencias:
-        print("Sem ocorrências.")
+        print("\nNenhuma ocorrência registada.")
         return
-    print("\n--- Lista de Ocorrências ---")
+        
+    print(f"\n{'ID':<5} | {'Descrição':<35} | {'Localização':<20} | {'Estado':<10}")
+    print("-" * 78)
     for o in ocorrencias:
-        print(f'{o["id"]} - {o["descricao"]} ({o["distrito"]}) -> {o["quartel_id"]}')
+        print(f"{o['id']:<5} | {o['descricao']:<35} | {o['local localizacao']:<20} | {o['estado']:<10}")
+
+def editar_ocorrência_campos(o, nova_desc, novo_local, novo_estado):
+    """Aplica as alterações nos campos da ocorrência."""
+    if nova_desc: o["descricao"] = nova_desc
+    if novo_local: o["local localizacao"] = novo_local
+    if novo_estado: o["estado"] = novo_estado
 
 def editar_ocorrencia():
-    """
-    Edição de ocorrência (cumpre 'edição de registos').
-    """
-    ocorrencias = carregar_ocorrencias()
-    if not ocorrencias:
-        print("Sem ocorrências.")
-        return
-    listar_ocorrencias()
-    oid = ler_str("ID da ocorrência a editar: ")
-    oc = next((o for o in ocorrencias if o["id"] == oid), None)
-    if not oc:
+    print("\n--- Editar Ocorrência ---")
+    id_alvo = ler_str("Introduza o ID da ocorrência a editar: ")
+    ocorrencias = ler_csv(FICHEIRO_OCORRENCIAS, CAMPOS)
+    
+    encontrado = False
+    for o in ocorrencias:
+        if o["id"] == id_alvo:
+            encontrado = True
+            print(f"\nEncontrada: {o['descricao']} em {o['local localizacao']} [{o['estado']}]")
+            
+            nova_desc = input("Nova descrição (Enter para manter): ").strip()
+            novo_local = input("Nova localização (Enter para manter): ").strip()
+            
+            print("Estados possíveis: 1 - Ativa, 2 - Em Curso, 3 - Resolvida")
+            op_est = input("Escolha o novo estado (Enter para manter): ").strip()
+            novo_estado = ""
+            if op_est == "1": novo_estado = "Ativa"
+            elif op_est == "2": novo_estado = "Em Curso"
+            elif op_est == "3": novo_estado = "Resolvida"
+            
+            editar_ocorrência_campos(o, nova_desc, novo_local, novo_estado)
+            break
+            
+    if encontrado:
+        gravar_csv(FICHEIRO_OCORRENCIAS, ocorrencias, CAMPOS)
+        print("Ocorrência atualizada com sucesso!")
+    else:
         print("Ocorrência não encontrada.")
-        return
-
-    nova_desc = input(f"Descrição [{oc['descricao']}]: ").strip()
-    print(f"Distrito atual: {oc['distrito']}")
-    mudar_distrito = input("Alterar distrito? (s/n): ").strip().lower()
-    mudar_quartel = input("Alterar quartel? (s/n): ").strip().lower()
-
-    if nova_desc:
-        oc["descricao"] = nova_desc
-    if mudar_distrito == "s":
-        oc["distrito"] = ler_distrito()
-    if mudar_quartel == "s":
-        qid = escolher_quartel()
-        if qid:
-            oc["quartel_id"] = qid
-
-    guardar_ocorrencias(ocorrencias)
-    print("Ocorrência atualizada.")
 
 def remover_ocorrencia():
-    """
-    Remoção de ocorrência (cumpre 'remoção de registos').
-    """
-    ocorrencias = carregar_ocorrencias()
-    if not ocorrencias:
-        print("Sem ocorrências.")
-        return
-    listar_ocorrencias()
-    oid = ler_str("ID da ocorrência a remover: ")
-    nova_lista = [o for o in ocorrencias if o["id"] != oid]
-    if len(nova_lista) == len(ocorrencias):
+    print("\n--- Remover Ocorrência ---")
+    id_alvo = ler_str("ID da ocorrência a remover: ")
+    ocorrencias = ler_csv(FICHEIRO_OCORRENCIAS, CAMPOS)
+    
+    tamanho_original = len(ocorrencias)
+    ocorrencias = [o for o in ocorrencias if o["id"] != id_alvo]
+    
+    if len(ocorrencias) < tamanho_original:
+        gravar_csv(FICHEIRO_OCORRENCIAS, ocorrencias, CAMPOS)
+        print("Ocorrência removida com sucesso!")
+    else:
         print("Ocorrência não encontrada.")
-        return
-    guardar_ocorrencias(nova_lista)
-    print("Ocorrência removida.")
